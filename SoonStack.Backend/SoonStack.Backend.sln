@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoonStack.Backend", "SoonStack.Backend.csproj", "{211AE922-9FD7-4D43-BC10-F39631037D6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoonStack.Backend", "SoonStack.Backend.csproj", "{211AE922-9FD7-4D43-BC10-F39631037D6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoonStack.Backend.Shared", "..\SoonStack.Backend.Shared\SoonStack.Backend.Shared.csproj", "{3B1F3AD4-C833-4B31-AE5A-7E1AA44545D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoonStack.Backend.Shared", "..\SoonStack.Backend.Shared\SoonStack.Backend.Shared.csproj", "{3B1F3AD4-C833-4B31-AE5A-7E1AA44545D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoonStack.Backend.Test", "..\SoonStack.Backend.Test\SoonStack.Backend.Test.csproj", "{85E50E12-D64D-4608-8554-5598A41E14F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{3B1F3AD4-C833-4B31-AE5A-7E1AA44545D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B1F3AD4-C833-4B31-AE5A-7E1AA44545D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B1F3AD4-C833-4B31-AE5A-7E1AA44545D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85E50E12-D64D-4608-8554-5598A41E14F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85E50E12-D64D-4608-8554-5598A41E14F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85E50E12-D64D-4608-8554-5598A41E14F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85E50E12-D64D-4608-8554-5598A41E14F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
