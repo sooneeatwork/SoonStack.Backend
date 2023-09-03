@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoonStack.Backend", "SoonStack.Backend.csproj", "{211AE922-9FD7-4D43-BC10-F39631037D6E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoonStack.Backend.Shared", "..\SoonStack.Backend.Shared\SoonStack.Backend.Shared.csproj", "{3B1F3AD4-C833-4B31-AE5A-7E1AA44545D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{211AE922-9FD7-4D43-BC10-F39631037D6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{211AE922-9FD7-4D43-BC10-F39631037D6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{211AE922-9FD7-4D43-BC10-F39631037D6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B1F3AD4-C833-4B31-AE5A-7E1AA44545D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B1F3AD4-C833-4B31-AE5A-7E1AA44545D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B1F3AD4-C833-4B31-AE5A-7E1AA44545D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B1F3AD4-C833-4B31-AE5A-7E1AA44545D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
