@@ -1,0 +1,20 @@
+DELIMITER //
+
+CREATE PROCEDURE BulkUpdateProducts(IN jsonData JSON)
+BEGIN
+    DECLARE i INT DEFAULT 0;
+    DECLARE currentId INT;
+    DECLARE currentQuantity INT;
+    DECLARE jsonLength INT DEFAULT JSON_LENGTH(jsonData);
+
+    WHILE i < jsonLength DO
+        SET currentId = JSON_UNQUOTE(JSON_EXTRACT(jsonData, CONCAT('$[', i, '].id')));
+        SET currentQuantity = JSON_UNQUOTE(JSON_EXTRACT(jsonData, CONCAT('$[', i, '].quantity')));
+
+        UPDATE product SET quantity = currentQuantity WHERE id = currentId;
+
+        SET i = i + 1;
+    END WHILE;
+END //
+
+DELIMITER ;

@@ -1,0 +1,13 @@
+CREATE VIEW order_details_view AS
+SELECT 
+  o.Id AS OrderId, 
+  o.OrderDate, 
+  o.CustomerId,
+  oi.OrderId AS ItemOrderId, 
+  oi.ProductId, 
+  oi.Quantity, 
+  oi.Price
+FROM 
+  orders AS o
+JOIN 
+  orderitem AS oi ON o.Id = oi.OrderId;

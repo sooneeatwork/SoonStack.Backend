@@ -1,0 +1,63 @@
+CREATE DATABASE IF NOT EXISTS CleanStore;
+USE CleanStore;
+
+-- Table for Customer
+CREATE TABLE IF NOT EXISTS Customer (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(255) NOT NULL,
+    Email VARCHAR(255) NOT NULL,
+    DateOfBirth DATETIME NOT NULL,
+    Street VARCHAR(255),
+    City VARCHAR(255),
+    State VARCHAR(255),
+    PostalCode VARCHAR(50),
+    Country VARCHAR(255),
+    CreatedDate DATETIME,
+    CreatedBy BIGINT,
+    ModifiedDate DATETIME,
+    ModifiedBy BIGINT,
+    RowVersion CHAR(36)
+);
+
+-- Table for Product
+CREATE TABLE IF NOT EXISTS Product (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(255) NOT NULL,
+    Price DECIMAL(10, 2) NOT NULL,
+    Description TEXT,
+    StockQuantity INT NOT NULL,
+    CreatedDate DATETIME,
+    CreatedBy BIGINT,
+    ModifiedDate DATETIME,
+    ModifiedBy BIGINT,
+    RowVersion CHAR(36)
+);
+
+-- Table for Orders
+CREATE TABLE IF NOT EXISTS Orders (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    CustomerId INT NOT NULL,
+    OrderDate DATETIME NOT NULL,
+    CreatedDate DATETIME,
+    CreatedBy BIGINT,
+    ModifiedDate DATETIME,
+    ModifiedBy BIGINT,
+    RowVersion CHAR(36),
+    FOREIGN KEY (CustomerId) REFERENCES Customer(Id)
+);
+
+-- Table for OrderItem
+CREATE TABLE IF NOT EXISTS OrderItem (
+    OrderId INT,
+    ProductId INT,
+    Quantity INT NOT NULL,
+    Price DECIMAL(10, 2) NOT NULL,
+    CreatedDate DATETIME,
+    CreatedBy BIGINT,
+    ModifiedDate DATETIME,
+    ModifiedBy BIGINT,
+    RowVersion CHAR(36),
+    PRIMARY KEY (OrderId, ProductId),
+    FOREIGN KEY (OrderId) REFERENCES Orders(Id),
+    FOREIGN KEY (ProductId) REFERENCES Product(Id)
+);
