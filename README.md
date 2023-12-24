@@ -26,7 +26,9 @@ Follow these steps to set up and run SoonMonoCleanStore on your local machine:
 ### 2.1 Database Configuration
 
 Before running the SoonMonoCleanStore application, you need to set the database. Follow these steps:
-0. Make sure mysql is installed
+
+0. Make sure mysql is installed.
+   
 1. Run all db script provided at folder MySql in MySql which can be found at ~\SoonMonoCleanStore\Persistance\DatabaseScript\MySQL.
 
 2. Update the `ConnectionStrings` section with your database connection information.
