@@ -3,25 +3,30 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedKernel", "SharedKernal\SharedKernel.csproj", "{675CE5AE-F399-44F4-9AE0-247F0CAF7875}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedKernel", "SharedKernal\SharedKernel.csproj", "{675CE5AE-F399-44F4-9AE0-247F0CAF7875}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Feature", "Feature", "{5F7130DB-E224-4272-8A09-9D71FFB5FC64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{C9DAC9CD-04D7-44B6-A577-2CCDACE0F5A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{C9DAC9CD-04D7-44B6-A577-2CCDACE0F5A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestApi", "RestApi\RestApi.csproj", "{7C0FCDF1-B227-4196-850A-E541B66147BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestApi", "RestApi\RestApi.csproj", "{7C0FCDF1-B227-4196-850A-E541B66147BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductSlices", "ProductSlices\ProductSlices.csproj", "{C576952D-AA15-4C4F-B12E-B36FAE207E6D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductSlices", "ProductSlices\ProductSlices.csproj", "{C576952D-AA15-4C4F-B12E-B36FAE207E6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerSlices", "CustomerSlices\CustomerSlices.csproj", "{D3F89CFB-4458-46A1-AD52-92441613A1D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerSlices", "CustomerSlices\CustomerSlices.csproj", "{D3F89CFB-4458-46A1-AD52-92441613A1D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderSlices", "OrderSlices\OrderSlices.csproj", "{DCD1F59E-55A1-43E9-9B2E-4CEA12B95138}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderSlices", "OrderSlices\OrderSlices.csproj", "{DCD1F59E-55A1-43E9-9B2E-4CEA12B95138}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DapperPersistance", "Persistance\DapperPersistance.csproj", "{F3A478CE-4DF6-4996-AE0E-0DC9884E52DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DapperPersistance", "Persistance\DapperPersistance.csproj", "{F3A478CE-4DF6-4996-AE0E-0DC9884E52DF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{94BAE304-7EAA-45C2-B67F-2B2582CF8D88}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{9B2CE3AF-5BD2-403F-883C-181A0FA6D57B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{89D25C5C-029A-4D4D-9FA2-5B031D8C1D67}"
+	ProjectSection(SolutionItems) = preProject
+		Docs\architecture.png = Docs\architecture.png
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
