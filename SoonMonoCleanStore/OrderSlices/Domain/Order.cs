@@ -1,9 +1,4 @@
-﻿using SharedKernal.Domain;
-using SqlKata;
-using System;
-using System.Collections.Generic;
-
-namespace OrderSlices.Domain
+﻿namespace OrderSlices.Domain
 {
     public class Order : BaseEntity
     {

@@ -1,7 +1,4 @@
-﻿using CustomerSlices.Repository.DatabaseModel;
-using SharedKernel.Domain.RepoInterface;
-
-namespace CustomerSlices.UseCases
+﻿namespace CustomerSlices.UseCases
 {
     public class ViewCustomerProfileQuery : IRequest<Result<CustomerProfileResponse>>
     {

@@ -1,20 +1,4 @@
-﻿using Dapper;
-using DapperPersistance.DatabaseQueryExecutor;
-using DapperPersistence;
-using MySql.Data.MySqlClient;
-using ProductSlices.Repository.DatabaseModel;
-using SharedKernel.Domain.RepoInterface;
-using SqlKata;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Common;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-
-namespace ProductSlices.Repository.Repository
+﻿namespace ProductSlices.Repository.Repository
 {
     public class ProductRepository : GenericRepository, IProductRepository
     {

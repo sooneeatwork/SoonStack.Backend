@@ -1,8 +1,4 @@
-﻿using CustomerSlices.Repository.CustomerTableMapper;
-using CustomerSlices.Repository.DatabaseModel;
-using CustomerSlices.Repository.RepoInterfaces;
-
-namespace CustomerSlices.UseCases
+﻿namespace CustomerSlices.UseCases
 {
     public record EditCustomerProfileCommand(
         int CustomerId,

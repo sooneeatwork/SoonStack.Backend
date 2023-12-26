@@ -1,7 +1,4 @@
-﻿using ProductSlices.Repository.DatabaseModel;
-using ProductSlices.Repository.Repository;
-
-namespace ProductSlices.UseCases
+﻿namespace ProductSlices.UseCases
 {
     public record SearchProductByIdQuery(long Id) : IRequest<Result<ProductDetailDto>> { }
     public record ProductDetailDto(long Id, string Name, decimal Price, string Description, int StockQuantity);

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace OrderSlices.Repository.DatabaseModel
+﻿namespace OrderSlices.Repository.DatabaseModel
 {
     public class OrderDetailsView
     {

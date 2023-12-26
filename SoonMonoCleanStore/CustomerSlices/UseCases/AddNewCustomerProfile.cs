@@ -1,14 +1,4 @@
-﻿using CustomerSlices.Repository.CustomerTableMapper;
-using CustomerSlices.Repository.DatabaseModel;
-using CustomerSlices.Repository.RepoInterfaces;
-using SharedKernel.Domain.RepoInterface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CustomerSlices.UseCases
+﻿namespace CustomerSlices.UseCases
 {
     public record AddNewCustomerProfileCommand(
       string NewName,

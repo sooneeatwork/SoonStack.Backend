@@ -1,12 +1,4 @@
-﻿using ProductSlices.Repository.Repository;
-using SharedKernel.UseCases.ProductSlices;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ProductSlices.ModuleServices
+﻿namespace ProductSlices.ModuleServices
 {
     public class ProductQueryService : IProductQueryServices
     {

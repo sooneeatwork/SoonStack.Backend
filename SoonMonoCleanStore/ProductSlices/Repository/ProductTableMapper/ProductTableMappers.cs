@@ -1,13 +1,4 @@
-﻿using ProductSlices.Domain;
-using ProductSlices.Repository.DatabaseModel;
-using SharedKernel.Domain.ValueObject;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ProductSlices.Repository.ProductTableMapper
+﻿namespace ProductSlices.Repository.ProductTableMapper
 {
     public class ProductTableMappers : IProductTableMappers
     {

@@ -1,16 +1,4 @@
-﻿using CustomerSlices.Repository.DatabaseModel;
-using CustomerSlices.Repository.RepoInterfaces;
-using DapperPersistance.DatabaseQueryExecutor;
-using DapperPersistence;
-using SqlKata;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CustomerSlices.Repository.Repository
+﻿namespace CustomerSlices.Repository.Repository
 {
     public class CustomerRepository : GenericRepository,ICustomerRepository
     {

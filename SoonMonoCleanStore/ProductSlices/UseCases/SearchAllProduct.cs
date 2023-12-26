@@ -1,7 +1,4 @@
-﻿using ProductSlices.Repository.DatabaseModel;
-using ProductSlices.Repository.Repository;
-
-namespace ProductSlices.UseCases
+﻿namespace ProductSlices.UseCases
 {
     // Query to get all products
     public struct SearchAllProductQuery : IRequest<Result<IEnumerable<ProductDto>>> { }

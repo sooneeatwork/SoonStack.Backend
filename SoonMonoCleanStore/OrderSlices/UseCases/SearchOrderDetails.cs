@@ -1,7 +1,4 @@
-﻿using OrderSlices.Domain;
-using OrderSlices.Repository.Repository.RepoInterfaces;
-
-namespace OrderSlices.UseCases
+﻿namespace OrderSlices.UseCases
 {
     public record GetOrderDetailsQuery(long OrderId) : IRequest<Result<OrderDetailsDto>>;
     public class OrderDetailsDto

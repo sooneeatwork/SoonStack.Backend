@@ -1,20 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dapper;
-using DapperPersistance.DatabaseQueryExecutor;
-using DapperPersistence;
-using OrderSlices.Repository.DatabaseModel;
-using OrderSlices.Repository.Repository.RepoInterfaces;
-using SharedKernel.PersistanceShared;
-using SqlKata;
-using SqlKata.Compilers;
+﻿using DapperPersistence;
 
 namespace OrderSlices.Repository.Repository
 {
+                                   
     public class OrderRepository : GenericRepository, IOrderRepository
     {
         public OrderRepository(IDbConnection connection, IDbSqlExecutor dbSqlExecutor) : base(connection, dbSqlExecutor)

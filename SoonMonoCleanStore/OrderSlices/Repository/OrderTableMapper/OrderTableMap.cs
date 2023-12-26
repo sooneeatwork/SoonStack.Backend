@@ -1,11 +1,4 @@
-﻿using OrderSlices.Repository.DatabaseModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OrderSlices.Repository.OrderTableMapper
+﻿namespace OrderSlices.Repository.OrderTableMapper
 {
     public class OrderTableMap : IOrderTableMap
     {

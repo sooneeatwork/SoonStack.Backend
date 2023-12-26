@@ -2,13 +2,21 @@
 
 
 global using CustomerSlices.Domain;
+global using CustomerSlices.Repository.DatabaseModel;
+global using CustomerSlices.Repository.RepoInterfaces;
+global using CustomerSlices.Repository.CustomerTableMapper;
 
 global using SharedKernal.Domain;
 global using SharedKernel.Domain.ValueObject;
 global using SharedKernel.UseCases.Wrapper;
 global using SharedKernel.UseCases.MapperInterface;
+global using SharedKernel.Domain.RepoInterface;
 
+global using DapperPersistance.DatabaseQueryExecutor;
+global using DapperPersistence;
 
+global using SqlKata;
+global using System.Data;
 global using MediatR;
 
 

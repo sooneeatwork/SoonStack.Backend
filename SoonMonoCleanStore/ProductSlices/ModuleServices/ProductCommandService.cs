@@ -1,11 +1,4 @@
-﻿using Newtonsoft.Json;
-using ProductSlices.Repository.ProductTableMapper;
-using ProductSlices.Repository.Repository;
-using SharedKernel.PersistanceShared;
-using SharedKernel.UseCases.ProductSlices;
-using System.Data;
-
-namespace ProductSlices.ModuleServices
+﻿namespace ProductSlices.ModuleServices
 {
     public class ProductCommandService : IProductCommandServices
     {

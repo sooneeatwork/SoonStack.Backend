@@ -1,8 +1,4 @@
-﻿using DapperPersistence;
-using SharedKernel.Domain.RepoInterface;
-using System.Data;
-
-namespace OrderSlices.UseCases
+﻿namespace OrderSlices.UseCases
 {
     public record PlaceOrderCommand(int CustomerId, List<ProductOrderDto> ProductOrders) : IRequest<Result<long>>;
 

@@ -1,9 +1,4 @@
-﻿using ProductSlices.Repository.DatabaseModel;
-using ProductSlices.Repository.ProductTableMapper;
-using ProductSlices.Repository.Repository;
-using SharedKernel.Domain.RepoInterface;
-
-namespace ProductSlices.UseCases
+﻿namespace ProductSlices.UseCases
 {
     public record AddProductCommand(
         string Name,
