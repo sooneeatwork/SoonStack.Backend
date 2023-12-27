@@ -36,14 +36,13 @@
                 return Result<int>.Failure($"Product with ID {request.ProductId} not found.");
 
             var product = _mapper.Map<ProductTable, Product>(productData);
-
-            // Update customer profile information based on the request
+            
             product.UpdateProductInfo(request.NewName,
                                         request.NewDescription,
                                         request.NewPrice,
                                         request.NewStockQuantity);
 
-            // Save the updated customer information
+          
             var (dataFields, whereClause) = _productTableMapper.CreateMapForUpdate(product, productData);
             int rowsAffected = await _productRepository.UpdateOneAsync<ProductTable>(dataFields, whereClause);
 

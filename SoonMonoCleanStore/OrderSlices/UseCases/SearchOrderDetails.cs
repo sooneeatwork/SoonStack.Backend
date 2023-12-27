@@ -1,4 +1,6 @@
-﻿namespace OrderSlices.UseCases
+﻿using Infrastructure.Logging;
+
+namespace OrderSlices.UseCases
 {
     public record GetOrderDetailsQuery(long OrderId) : IRequest<Result<OrderDetailsDto>>;
     public class OrderDetailsDto
@@ -19,11 +21,13 @@
     {
         private readonly IOrderRepository _orderRepository;
         private readonly IMapper _mapper;
+        private readonly ILogger _logger;
 
-        public GetOrderDetailsHandler(IOrderRepository orderRepository, IMapper mapper)
+        public GetOrderDetailsHandler(IOrderRepository orderRepository, IMapper mapper, ILogger logger)
         {
             _orderRepository = orderRepository;
             _mapper = mapper;
+            _logger = logger;
         }
 
         public async Task<Result<OrderDetailsDto>> Handle(GetOrderDetailsQuery query, CancellationToken cancellationToken)
@@ -46,6 +50,7 @@
             catch (Exception ex)
             {
                 // Log the exception details if necessary
+                _logger.LogError("GetOrderDetailsQuery", ex);
                 return Result<OrderDetailsDto>.Failure($"An error occurred: {ex.Message}");
             }
         }

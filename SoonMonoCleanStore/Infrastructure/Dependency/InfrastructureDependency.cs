@@ -1,4 +1,6 @@
-﻿using Infrastructure.Mapper;
+﻿using Infrastructure.Logger;
+using Infrastructure.Logging;
+using Infrastructure.Mapper;
 using Microsoft.Extensions.DependencyInjection;
 using SharedKernel.UseCases.MapperInterface;
 using System;
@@ -14,6 +16,8 @@ namespace Infrastructure.Dependency
         public static void AddInfraDependency(this IServiceCollection services) 
         {
             services.AddScoped<IMapper, MapperLibrary>();
+            services.AddScoped<ILogger, SerilogLogger>();
+
         }
     }
 }
