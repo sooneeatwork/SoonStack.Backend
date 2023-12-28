@@ -7,32 +7,36 @@
 
     public class PlaceOrderHandler : IRequestHandler<PlaceOrderCommand, Result<long>>
     {
-      
+
         private readonly IGenericRepository _genericRepository;
         private readonly IOrderTableMap _orderTableMap;
         private readonly IOrderItemTableMap _orderItemsTableMap;
         private readonly IProductQueryServices _productQueryServices;
         private readonly IProductCommandServices _productCommandServices;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly ILogger _logger;
 
         public PlaceOrderHandler(IGenericRepository genericRepository,
                                  IOrderTableMap orderTableMap,
                                  IOrderItemTableMap orderItemsTableMap,
                                  IProductQueryServices productQueryServices,
                                  IProductCommandServices productCommandServices,
-                                 IUnitOfWork unitOfWork)
+                                 IUnitOfWork unitOfWork,
+                                 ILogger logger)
         {
-           
+
             _genericRepository = genericRepository;
             _orderTableMap = orderTableMap;
             _orderItemsTableMap = orderItemsTableMap;
             _productQueryServices = productQueryServices;
             _productCommandServices = productCommandServices;
             _unitOfWork = unitOfWork;
+            _logger = logger;
         }
 
         public async Task<Result<long>> Handle(PlaceOrderCommand command, CancellationToken cancellationToken)
         {
+            Result<long> result;
             // Validate the customer ID
             if (command.CustomerId <= 0)
                 return Result<long>.Failure("Invalid customer ID.");
@@ -42,20 +46,21 @@
                 try
                 {
                     // Create a new order
-                    var result = await ProcessPlaceOrder(command, dbTrans);
+                    result = await ProcessPlaceOrder(command, dbTrans);
 
-                    if(result.IsSuccess)
+                    if (result.IsSuccess)
                         _unitOfWork.CommitTransaction(dbTrans);
-
-                    return result;
                 }
                 catch (Exception ex)
                 {
                     _unitOfWork.RollbackTransaction(dbTrans);
                     // Log the exception if necessary
-                    return Result<long>.Failure($"Error placing order: {ex.Message}");
+                    _logger.LogError(nameof(PlaceOrderCommand), ex);
+                    result = Result<long>.Failure($"Error placing order");
                 }
             }
+
+            return result;
         }
 
         private async Task<Result<long>> ProcessPlaceOrder(PlaceOrderCommand command, IDbTransaction dbTrans)
@@ -68,13 +73,13 @@
             foreach (var productOrder in command.ProductOrders)
             {
                 int stockCount = await _productQueryServices.GetProductStockCount(productOrder.ProductId);
-                var (canAddOrder,message) = order.CanProceed(stockCount, productOrder.Quantity);
+                var (canAddOrder, message) = order.CanProceed(stockCount, productOrder.Quantity);
 
-                if(!canAddOrder)
+                if (!canAddOrder)
                     return Result<long>.Failure(message);
 
                 order.TryAddOrderItem(newOrderId,
-                                       productOrder.ProductId, 
+                                       productOrder.ProductId,
                                        productOrder.Quantity,
                                        productOrder.Price);
 
@@ -83,7 +88,7 @@
 
             var orderItemsTableData = _orderItemsTableMap.CreateMap(order.GetOrderItems());
             await _genericRepository.InsertManyAsync<OrderItemsTable>(orderItemsTableData, dbTrans);
-            await _productCommandServices.UpdateProductStockCount(productQuantityDict,dbTrans);
+            await _productCommandServices.UpdateProductStockCount(productQuantityDict, dbTrans);
             return Result<long>.Success(newOrderId);
         }
     }

@@ -18,25 +18,40 @@
     {
         private readonly IGenericRepository _genericRepository;
         private readonly IMapper _mapper;
+        private readonly ILogger _logger;
         public ViewCustomerProfileHandler(IGenericRepository genericRepository,
-                                          IMapper mapper)
+                                          IMapper mapper,
+                                          ILogger logger)
         {
             _genericRepository = genericRepository;
             _mapper = mapper;
+            _logger = logger;
         }
 
         public async Task<Result<CustomerProfileResponse>> Handle(ViewCustomerProfileQuery request, CancellationToken cancellationToken)
         {
             ArgumentNullException.ThrowIfNull(request);
             ArgumentNullException.ThrowIfNull(request.CustomerId);
+            Result<CustomerProfileResponse> result;
 
-            var customer = await _genericRepository.GetByIdAsync<CustomersTable>(request.CustomerId);
+            try
+            {
+                var customer = await _genericRepository.GetByIdAsync<CustomersTable>(request.CustomerId);
 
-            if (customer == null)
-                return Result<CustomerProfileResponse>.Failure($"Customer with ID {request.CustomerId} not found.");
+                if (customer == null)
+                    return Result<CustomerProfileResponse>.Failure($"Customer with ID {request.CustomerId} not found.");
 
-            var result = _mapper.Map<CustomersTable, CustomerProfileResponse>(customer);
-            return Result<CustomerProfileResponse>.Success(result);
+                var response = _mapper.Map<CustomersTable, CustomerProfileResponse>(customer);
+                result = Result<CustomerProfileResponse>.Success(response);
+
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(nameof(ViewCustomerProfileQuery), ex);
+                result =  Result<CustomerProfileResponse>.Failure("Failed to view customer profile");
+            }
+
+            return result;
         }
     }
 }

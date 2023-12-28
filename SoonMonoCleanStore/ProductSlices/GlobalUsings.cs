@@ -14,6 +14,7 @@ global using SharedKernel.PersistanceShared;
 global using SharedKernel.UseCases.ProductSlices;
 global using SharedKernel.Domain.RepoInterface;
 
+global using Infrastructure.Logging;
 
 global using ProductSlices.Repository.ProductTableMapper;
 global using ProductSlices.Repository.Repository;

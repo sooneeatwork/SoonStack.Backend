@@ -11,18 +11,23 @@
         private readonly IGenericRepository _genericRepository;
         private readonly IProductRepository _productRepository;
         private readonly IProductTableMappers _productTableMappers;
+        private readonly ILogger _logger;
 
         public AddProductHandler(IGenericRepository genericRepository,
                                  IProductRepository productRepository,
-                                 IProductTableMappers productTableMappers)
+                                 IProductTableMappers productTableMappers,
+                                 ILogger logger)
         {
             _genericRepository = genericRepository;
             _productRepository = productRepository;
             _productTableMappers = productTableMappers;
+            _logger = logger;
         }
 
         public async Task<Result<int>> Handle(AddProductCommand request, CancellationToken cancellationToken)
         {
+            Result<int> result;
+
             try
             {
                 ArgumentNullException.ThrowIfNull(request);
@@ -35,7 +40,7 @@
                 var productTableData = _productTableMappers.CreateMapForInsert(product);
                 int productId = await _genericRepository.InsertOneAsync<ProductTable>(productTableData);
 
-                return productId > 0
+                result = productId > 0
                     ? Result<int>.Success(productId)
                     : Result<int>.Failure("Failed to add the product.");
             }
@@ -43,8 +48,11 @@
             {
                 // Log the exception if logging is setup
                 // Consider the type of exception to provide a meaningful message
-                return Result<int>.Failure($"An error occurred: {ex.Message}");
+                _logger.LogError(nameof(AddProductCommand), ex);
+                result = Result<int>.Failure($"An error occurred: {ex.Message}");
             }
+
+            return result;
         }
     }
 }

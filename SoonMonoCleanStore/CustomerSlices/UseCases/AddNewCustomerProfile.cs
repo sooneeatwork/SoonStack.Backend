@@ -1,4 +1,6 @@
-﻿namespace CustomerSlices.UseCases
+﻿
+
+namespace CustomerSlices.UseCases
 {
     public record AddNewCustomerProfileCommand(
       string NewName,
@@ -13,14 +15,17 @@
         private readonly ICustomerRepository _customerRepository;
         private readonly ICustomerTableMappers _customerTableMapper;
         private readonly IMapper _mapper;
+        private readonly ILogger _logger;
 
         public AddNewCustomerProfileHandler(ICustomerRepository customerRepository,  
                                             IMapper mapper,
-                                            ICustomerTableMappers customerTableMappers)
+                                            ICustomerTableMappers customerTableMappers,
+                                            ILogger logger)
         {
             _customerRepository = customerRepository;
             _mapper = mapper;
             _customerTableMapper = customerTableMappers;
+            _logger = logger;
         }
 
         public async Task<Result<long>> Handle(AddNewCustomerProfileCommand request, CancellationToken cancellationToken)
@@ -44,8 +49,9 @@
                 var customerTableData = _customerTableMapper.CreateMapForInsert(newCustomer);
                  newId = await _customerRepository.InsertOneGetIdAsync<CustomersTable>(customerTableData);
             }
-            catch
+            catch(Exception ex)
             {
+                _logger.LogError(nameof(AddNewCustomerProfileCommand), ex);
                 throw;
             }
 

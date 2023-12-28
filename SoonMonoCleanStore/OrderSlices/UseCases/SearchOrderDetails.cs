@@ -1,4 +1,5 @@
 ﻿using Infrastructure.Logging;
+using SharedKernel.UseCases.Wrapper;
 
 namespace OrderSlices.UseCases
 {
@@ -32,6 +33,8 @@ namespace OrderSlices.UseCases
 
         public async Task<Result<OrderDetailsDto>> Handle(GetOrderDetailsQuery query, CancellationToken cancellationToken)
         {
+            Result<OrderDetailsDto> result;
+
             try
             {
                 var orderDetails = await _orderRepository.GetOrderDetailsByIdAsync(query.OrderId);
@@ -45,14 +48,16 @@ namespace OrderSlices.UseCases
                 var items = orderDetails.Select(od => new OrderItemDto(od.ProductId, od.Quantity, od.Price));
                 orderDetailsDto.Items?.AddRange(items);
 
-                return Result<OrderDetailsDto>.Success(orderDetailsDto);
+                result = Result<OrderDetailsDto>.Success(orderDetailsDto);
             }
             catch (Exception ex)
             {
                 // Log the exception details if necessary
-                _logger.LogError("GetOrderDetailsQuery", ex);
-                return Result<OrderDetailsDto>.Failure($"An error occurred: {ex.Message}");
+                _logger.LogError(nameof(GetOrderDetailsQuery), ex);
+                result = Result<OrderDetailsDto>.Failure($"Failed to get order detail");
             }
+
+            return result;
         }
 
 

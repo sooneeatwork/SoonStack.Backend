@@ -15,6 +15,8 @@ global using SharedKernel.Domain.RepoInterface;
 global using DapperPersistance.DatabaseQueryExecutor;
 global using DapperPersistence;
 
+global using Infrastructure.Logging;
+
 global using SqlKata;
 global using System.Data;
 global using MediatR;

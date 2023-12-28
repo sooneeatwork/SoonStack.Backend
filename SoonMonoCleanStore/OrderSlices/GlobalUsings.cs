@@ -17,6 +17,8 @@ global using SharedKernel.UseCases.ProductSlices;
 global using SharedKernel.Domain.RepoInterface;
 global using SharedKernel.PersistanceShared;
 
+global using Infrastructure.Logging;
+
 global using OrderSlices.Domain;
 global using OrderSlices.Repository.DatabaseModel;
 global using OrderSlices.Repository.OrderItemTableMapper;
