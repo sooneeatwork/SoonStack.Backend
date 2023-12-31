@@ -2,7 +2,7 @@
 {
     public class OrderItem : BaseEntity
     {
-      
+        public long Id { get; set; } 
         public long OrderId { get; private set; }
         public long ProductId { get; private set; }
         public int Quantity { get; private set; }
