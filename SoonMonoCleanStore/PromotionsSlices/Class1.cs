@@ -2,8 +2,7 @@
 {
     public class Class1
     {
-        //test ???ads
-
+        
 
     }
 }
