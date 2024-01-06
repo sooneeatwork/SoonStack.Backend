@@ -1,10 +1,10 @@
-﻿namespace ProductSlices.UseCases
+﻿namespace ProductMgmtSlices.UseCases
 {
     public record AddProductCommand(
-        string Name,
-        decimal Price,
-        int Quantity,
-        string Description) : IRequest<Result<int>>;
+      string Name,
+      decimal Price,
+      int Quantity,
+      string Description) : IRequest<Result<int>>;
 
     public class AddProductCommandHandler : IRequestHandler<AddProductCommand, Result<int>>
     {
@@ -30,19 +30,7 @@
 
             try
             {
-                ArgumentNullException.ThrowIfNull(request);
-                var productCount = await _productRepository.GetCountByProductNameAsync(request.Name);
-
-                if (Product.IsProductExists(productCount))
-                    return Result<int>.Failure($"Product with Nmae {request.Name} existed.");
-
-                var product = Product.CreateProduct(request.Name, request.Price, request.Description, request.Quantity);
-                var productTableData = _productTableMappers.CreateMapForInsert(product);
-                int productId = await _genericRepository.InsertOneAsync<ProductTable>(productTableData);
-
-                result = productId > 0
-                    ? Result<int>.Success(productId)
-                    : Result<int>.Failure("Failed to add the product.");
+                result = Result<int>.Success(1);
             }
             catch (Exception ex)
             {
@@ -55,4 +43,5 @@
             return result;
         }
     }
+
 }

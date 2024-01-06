@@ -36,5 +36,15 @@ namespace ProductMgmtSlices.Domain
             // Implement logic to update stock
             StockQuantity = quantity;
         }
+
+        internal static bool IsProductExists(object productCount)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static object CreateProduct(string name, decimal price, string description, object quantity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
