@@ -28,25 +28,41 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{89D25C5C-0
 		Docs\architecture.png = Docs\architecture.png
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserSlices", "UserSlices\UserSlices.csproj", "{BE1E063E-EBF2-4F29-9427-D423D48A2D47}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserSlices", "UserSlices\UserSlices.csproj", "{BE1E063E-EBF2-4F29-9427-D423D48A2D47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductMgmtSlices", "ProductMgmtSlices\ProductMgmtSlices.csproj", "{86938269-85D0-4E34-931C-1B31EB6D2396}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductMgmtSlices", "ProductMgmtSlices\ProductMgmtSlices.csproj", "{86938269-85D0-4E34-931C-1B31EB6D2396}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryMgmtSlices", "InventoryMgmtSlices\InventoryMgmtSlices.csproj", "{E2D2D117-0F17-421C-A226-77C8E1C7E754}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryMgmtSlices", "InventoryMgmtSlices\InventoryMgmtSlices.csproj", "{E2D2D117-0F17-421C-A226-77C8E1C7E754}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderProcessingSlices", "OrderProcessingSlices\OrderProcessingSlices.csproj", "{3C71B3FC-8F8F-4EE8-88F2-BEEC17F5CEDB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderProcessingSlices", "OrderProcessingSlices\OrderProcessingSlices.csproj", "{3C71B3FC-8F8F-4EE8-88F2-BEEC17F5CEDB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShippingSlices", "ShippingSlices\ShippingSlices.csproj", "{3694B603-E9E9-4CB4-8317-763CCE2ACEB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShippingSlices", "ShippingSlices\ShippingSlices.csproj", "{3694B603-E9E9-4CB4-8317-763CCE2ACEB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRMSlices", "CRMSlices\CRMSlices.csproj", "{13220675-732D-4705-A0F0-F6FDA7087253}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CRMSlices", "CRMSlices\CRMSlices.csproj", "{13220675-732D-4705-A0F0-F6FDA7087253}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PromotionsSlices", "PromotionsSlices\PromotionsSlices.csproj", "{3A1EFCCA-191A-4CC4-8005-2A6C0AC5F9EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PromotionsSlices", "PromotionsSlices\PromotionsSlices.csproj", "{3A1EFCCA-191A-4CC4-8005-2A6C0AC5F9EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportSlices", "ReportSlices\ReportSlices.csproj", "{E8D61C8F-4831-4207-B1A8-B917A70E05C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportSlices", "ReportSlices\ReportSlices.csproj", "{E8D61C8F-4831-4207-B1A8-B917A70E05C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WishListSlices", "WishListSlices\WishListSlices.csproj", "{F3E065DF-9E82-47FE-899B-7D86C350B533}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WishListSlices", "WishListSlices\WishListSlices.csproj", "{F3E065DF-9E82-47FE-899B-7D86C350B533}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingCartSlices", "ShoppingCartSlices\ShoppingCartSlices.csproj", "{AAC37407-137D-48CE-A32D-A93A35AF467A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingCartSlices", "ShoppingCartSlices\ShoppingCartSlices.csproj", "{AAC37407-137D-48CE-A32D-A93A35AF467A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanStoreTest", "CleanStoreTest\CleanStoreTest.csproj", "{FB0AA24C-7B78-46C8-A7F9-DF2A75925346}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DC8DCEC1-DFE2-4E03-8F57-EDB1F67809C9}"
+	ProjectSection(SolutionItems) = preProject
+		Docs\Dev Log\Add new Product 001.md = Docs\Dev Log\Add new Product 001.md
+		Docs\Dev Log\Add new Product 002.md = Docs\Dev Log\Add new Product 002.md
+		DEV_001.MD = DEV_001.MD
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dev_Logs", "Dev_Logs", "{44D619EE-2565-4911-AD13-990B3EF7334F}"
+	ProjectSection(SolutionItems) = preProject
+		DEV_001.MD = DEV_001.MD
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Document", "Document\Document.csproj", "{EAABF9F8-A3B9-4934-93DC-55108D0A4CA6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -122,6 +138,14 @@ Global
 		{AAC37407-137D-48CE-A32D-A93A35AF467A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAC37407-137D-48CE-A32D-A93A35AF467A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAC37407-137D-48CE-A32D-A93A35AF467A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB0AA24C-7B78-46C8-A7F9-DF2A75925346}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB0AA24C-7B78-46C8-A7F9-DF2A75925346}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB0AA24C-7B78-46C8-A7F9-DF2A75925346}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB0AA24C-7B78-46C8-A7F9-DF2A75925346}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAABF9F8-A3B9-4934-93DC-55108D0A4CA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAABF9F8-A3B9-4934-93DC-55108D0A4CA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAABF9F8-A3B9-4934-93DC-55108D0A4CA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAABF9F8-A3B9-4934-93DC-55108D0A4CA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -143,6 +167,8 @@ Global
 		{E8D61C8F-4831-4207-B1A8-B917A70E05C1} = {5F7130DB-E224-4272-8A09-9D71FFB5FC64}
 		{F3E065DF-9E82-47FE-899B-7D86C350B533} = {5F7130DB-E224-4272-8A09-9D71FFB5FC64}
 		{AAC37407-137D-48CE-A32D-A93A35AF467A} = {5F7130DB-E224-4272-8A09-9D71FFB5FC64}
+		{44D619EE-2565-4911-AD13-990B3EF7334F} = {89D25C5C-029A-4D4D-9FA2-5B031D8C1D67}
+		{EAABF9F8-A3B9-4934-93DC-55108D0A4CA6} = {89D25C5C-029A-4D4D-9FA2-5B031D8C1D67}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6C24FCC5-66E0-4FE0-B671-EEBD42E53CF4}

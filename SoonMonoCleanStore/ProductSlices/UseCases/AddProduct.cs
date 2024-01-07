@@ -6,17 +6,17 @@
         int Quantity,
         string Description) : IRequest<Result<int>>;
 
-    public class AddProductHandler : IRequestHandler<AddProductCommand, Result<int>>
+    public class AddProductCommandHandler : IRequestHandler<AddProductCommand, Result<int>>
     {
         private readonly IGenericRepository _genericRepository;
         private readonly IProductRepository _productRepository;
         private readonly IProductTableMappers _productTableMappers;
         private readonly ILogger _logger;
 
-        public AddProductHandler(IGenericRepository genericRepository,
-                                 IProductRepository productRepository,
-                                 IProductTableMappers productTableMappers,
-                                 ILogger logger)
+        public AddProductCommandHandler(IGenericRepository genericRepository,
+                                        IProductRepository productRepository,
+                                        IProductTableMappers productTableMappers,
+                                        ILogger logger)
         {
             _genericRepository = genericRepository;
             _productRepository = productRepository;
@@ -26,15 +26,16 @@
 
         public async Task<Result<int>> Handle(AddProductCommand request, CancellationToken cancellationToken)
         {
+            ArgumentNullException.ThrowIfNull(request);
             Result<int> result;
 
             try
             {
-                ArgumentNullException.ThrowIfNull(request);
+                
                 var productCount = await _productRepository.GetCountByProductNameAsync(request.Name);
 
                 if (Product.IsProductExists(productCount))
-                    return Result<int>.Failure($"Product with Nmae {request.Name} existed.");
+                    return Result<int>.Failure($"Product with Name {request.Name} existed.");
 
                 var product = Product.CreateProduct(request.Name, request.Price, request.Description, request.Quantity);
                 var productTableData = _productTableMappers.CreateMapForInsert(product);
