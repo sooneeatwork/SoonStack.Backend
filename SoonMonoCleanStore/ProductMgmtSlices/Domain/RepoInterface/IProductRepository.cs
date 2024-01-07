@@ -4,6 +4,6 @@ namespace ProductMgmtSlices.Domain.RepoInterface
 {
     public interface IProductRepository : IGenericRepository
     {
-        Task GetCountByProductNameAsync(string name);
+        Task<int> GetCountByProductNameAsync(string name);
     }
 }

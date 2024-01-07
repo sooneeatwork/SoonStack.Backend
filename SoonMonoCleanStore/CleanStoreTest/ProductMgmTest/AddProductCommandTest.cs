@@ -1,146 +1,110 @@
-﻿using Infrastructure.Logging;
-using NSubstitute;
-using ProductMgmtSlices.Domain;
-using ProductMgmtSlices.Domain.RepoInterface;
-using ProductMgmtSlices.Repository.DatabaseModel;
-using ProductMgmtSlices.Repository.ProductTableMapper;
-using ProductMgmtSlices.UseCases;
-using SharedKernel.Domain.RepoInterface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CleanStoreTest.ProductMgmTest
+﻿namespace CleanStoreTest.ProductMgmTest
 {
     public class AddProductCommandTests
     {
+        private IGenericRepository genericRepository = Substitute.For<IGenericRepository>();
+        private IProductRepository productRepository = Substitute.For<IProductRepository>();
+        private IProductTableMappers productTableMappers = Substitute.For<IProductTableMappers>();
+        private IMapper mapper = Substitute.For<IMapper>();
+        private ILogger logger = Substitute.For<ILogger>();
 
         [Fact]
-        public async Task AddProductCommandHandler_ShouldExecuteOnce()
+        public async Task Handle_GivenValidRequest_ShouldAddProduct()
         {
             // Arrange
-            var mockGenericRepository = Substitute.For<IGenericRepository>();
-            var mockProductRepository = Substitute.For<IProductRepository>();
-            var mockProductTableMappers = Substitute.For<IProductTableMappers>();
-            var mockLogger = Substitute.For<ILogger>();
+            productRepository.GetCountByProductNameAsync(Arg.Any<string>()).Returns(Task.FromResult(0));
 
-            
-            var handler = new AddProductCommandHandler(mockGenericRepository, mockProductRepository, mockProductTableMappers, mockLogger);
-            var command = new AddProductCommand("Sample Product", 100.00m, 10, "Description");
+            var productObject = new Product
+            {
+                Name = "Test Product",
+                Price = 100,
+                StockQuantity = 10,
+                Description = "Description"
+            };
+
+            var product = Product.CreateProduct(productObject);
+            mapper.Map<AddProductCommand, Product>(Arg.Any<AddProductCommand>()).Returns(product);
+             var productTableData = productTableMappers.MapToTableForInsert(productObject);
+
+            genericRepository.InsertOneGetIdAsync<ProductTable>(productTableData).Returns(Task.FromResult(1L));
+
+            var handler = new AddProductCommandHandler(genericRepository, productRepository, productTableMappers, mapper, logger);
+            var command = new AddProductCommand("Test Product", 100, 10, "Description");
 
             // Act
             var result = await handler.Handle(command, new CancellationToken());
 
             // Assert
-            Assert.True(result.IsSuccess);
+            Assert.Equal(1L, result.Data);
+            await productRepository.Received(1).GetCountByProductNameAsync(Arg.Any<string>());
+            await genericRepository.Received(1).InsertOneGetIdAsync<ProductTable>(productTableData);
         }
 
 
-
         [Fact]
-        public async Task AddProductCommand_ShouldReturnSuccessAndProductId_WhenValid()
+        public async Task AddProductCommand_ShouldReturnFailure_WhenProductNameIsInvalid()
         {
             // Arrange
-            var mockGenericRepository = Substitute.For<IGenericRepository>();
-            var mockProductRepository = Substitute.For<IProductRepository>();
-            var mockProductTableMappers = Substitute.For<IProductTableMappers>();
-            var mockLogger = Substitute.For<ILogger>();
 
-            // Assuming the InsertOneAsync method returns the product ID
-            int expectedProductId = 1;
-            mockProductRepository.InsertOneAsync<ProductTable>(Arg.Any<Dictionary<string, object>>())
-                                 .Returns(expectedProductId);
 
-            var handler = new AddProductCommandHandler(mockGenericRepository, mockProductRepository, mockProductTableMappers, mockLogger);
-            var command = new AddProductCommand("Sample Product", 100.00m, 10, "Description");
+            var handler = new AddProductCommandHandler(genericRepository, productRepository, productTableMappers, mapper, logger);
+            var command = new AddProductCommand("", 100.00m, 10, "Description"); // Empty product name
 
             // Act
             var result = await handler.Handle(command, new CancellationToken());
 
             // Assert
-            Assert.True(result.IsSuccess);
-            Assert.Equal(expectedProductId, result.Data);
-            await mockProductRepository.Received(1).InsertOneAsync<ProductTable>(Arg.Any<Dictionary<string, object>>());
+            Assert.False(result.IsSuccess);
+            // Optionally check the specific error message or error type if your implementation supports it
         }
 
-        //[Fact]
-        //public async Task AddProductCommand_ShouldReturnFailure_WhenProductNameIsInvalid()
-        //{
-        //    // Arrange
-        //    var mockGenericRepository = Substitute.For<IGenericRepository>();
-        //    var mockProductRepository = Substitute.For<IProductRepository>();
-        //    var mockProductTableMappers = Substitute.For<IProductTableMappers>();
-        //    var mockLogger = Substitute.For<ILogger>();
+        [Fact]
+        public async Task AddProductCommand_ShouldReturnFailure_WhenPriceIsNegative()
+        {
+            // Arrange
 
-        //    var handler = new AddProductCommandHandler(mockGenericRepository, mockProductRepository, mockProductTableMappers, mockLogger);
-        //    var command = new AddProductCommand("", 100.00m, 10, "Description"); // Empty product name
 
-        //    // Act
-        //    var result = await handler.Handle(command, new CancellationToken());
+            var handler = new AddProductCommandHandler(genericRepository, productRepository, productTableMappers, mapper, logger);
+            var command = new AddProductCommand("Sample Product", -50.00m, 10, "Description"); // Negative price
 
-        //    // Assert
-        //    Assert.False(result.IsSuccess);
-        //    // Optionally check the specific error message or error type if your implementation supports it
-        //}
+            // Act
+            var result = await handler.Handle(command, new CancellationToken());
 
-        //[Fact]
-        //public async Task AddProductCommand_ShouldReturnFailure_WhenPriceIsNegative()
-        //{
-        //    // Arrange
-        //    var mockGenericRepository = Substitute.For<IGenericRepository>();
-        //    var mockProductRepository = Substitute.For<IProductRepository>();
-        //    var mockProductTableMappers = Substitute.For<IProductTableMappers>();
-        //    var mockLogger = Substitute.For<ILogger>();
+            // Assert
+            Assert.False(result.IsSuccess);
+        }
 
-        //    var handler = new AddProductCommandHandler(mockGenericRepository, mockProductRepository, mockProductTableMappers, mockLogger);
-        //    var command = new AddProductCommand("Sample Product", -50.00m, 10, "Description"); // Negative price
+        [Fact]
+        public async Task AddProductCommand_ShouldReturnFailure_WhenStockQuantityIsNegative()
+        {
+            // Arrange
 
-        //    // Act
-        //    var result = await handler.Handle(command, new CancellationToken());
 
-        //    // Assert
-        //    Assert.False(result.IsSuccess);
-        //}
+            var handler = new AddProductCommandHandler(genericRepository, productRepository, productTableMappers, mapper, logger); ;
+            var command = new AddProductCommand("Sample Product", 100.00m, -5, "Description"); // Negative stock quantity
 
-        //[Fact]
-        //public async Task AddProductCommand_ShouldReturnFailure_WhenStockQuantityIsNegative()
-        //{
-        //    // Arrange
-        //    var mockGenericRepository = Substitute.For<IGenericRepository>();
-        //    var mockProductRepository = Substitute.For<IProductRepository>();
-        //    var mockProductTableMappers = Substitute.For<IProductTableMappers>();
-        //    var mockLogger = Substitute.For<ILogger>();
+            // Act
+            var result = await handler.Handle(command, new CancellationToken());
 
-        //    var handler = new AddProductCommandHandler(mockGenericRepository, mockProductRepository, mockProductTableMappers, mockLogger);
-        //    var command = new AddProductCommand("Sample Product", 100.00m, -5, "Description"); // Negative stock quantity
+            // Assert
+            Assert.False(result.IsSuccess);
+        }
 
-        //    // Act
-        //    var result = await handler.Handle(command, new CancellationToken());
+        [Fact]
+        public async Task AddProductCommand_ShouldReturnFailure_WhenStockQuantityIsZero()
+        {
+            // Arrange
 
-        //    // Assert
-        //    Assert.False(result.IsSuccess);
-        //}
 
-        //[Fact]
-        //public async Task AddProductCommand_ShouldReturnFailure_WhenStockQuantityIsZero()
-        //{
-        //    // Arrange
-        //    var mockGenericRepository = Substitute.For<IGenericRepository>();
-        //    var mockProductRepository = Substitute.For<IProductRepository>();
-        //    var mockProductTableMappers = Substitute.For<IProductTableMappers>();
-        //    var mockLogger = Substitute.For<ILogger>();
+            var handler = new AddProductCommandHandler(genericRepository, productRepository, productTableMappers, mapper, logger);
+            var command = new AddProductCommand("Sample Product", 100.00m, 0, "Description"); // zero stock quantity
 
-        //    var handler = new AddProductCommandHandler(mockGenericRepository, mockProductRepository, mockProductTableMappers, mockLogger);
-        //    var command = new AddProductCommand("Sample Product", 100.00m, 0, "Description"); // zero stock quantity
+            // Act
+            var result = await handler.Handle(command, new CancellationToken());
 
-        //    // Act
-        //    var result = await handler.Handle(command, new CancellationToken());
-
-        //    // Assert
-        //    Assert.False(result.IsSuccess);
-        //}
+            // Assert
+            Assert.False(result.IsSuccess);
+        }
 
 
     }

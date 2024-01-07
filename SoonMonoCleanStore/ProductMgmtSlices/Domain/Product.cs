@@ -1,34 +1,13 @@
-﻿using SharedKernal.Domain;
-using System;
-
+﻿[assembly: InternalsVisibleTo("CleanStoreTest")]
 namespace ProductMgmtSlices.Domain
 {
     public class Product : BaseEntity
     {
         // Properties specific to Product
-        public string Name { get; private set; }
-        public string Description { get; private set; }
-        public decimal Price { get; private set; }
-        public int StockQuantity { get; private set; }
-       
-
-      
-
-        // Public constructor
-        public Product(string name, 
-                       string description, 
-                       decimal price, 
-                       int stockQuantity, 
-                       long? createdBy = null, 
-                       long? modifiedBy = null)
-        {
-            Name = name;
-            Description = description;
-            Price = price;
-            StockQuantity = stockQuantity;
-            CreatedBy = createdBy.GetValueOrDefault();
-            ModifiedBy = modifiedBy.GetValueOrDefault();
-        }
+        public string Name { get; internal set; } = string.Empty;
+        public string Description { get; internal set; } = string.Empty;
+        public decimal Price { get; internal set; } 
+        public int StockQuantity { get; internal set; }
 
         // Methods to update the entity
         public void UpdateStock(int quantity)
@@ -37,14 +16,36 @@ namespace ProductMgmtSlices.Domain
             StockQuantity = quantity;
         }
 
-        internal static bool IsProductExists(object productCount)
+        public static bool IsProductExists(int productCount)
         {
-            throw new NotImplementedException();
+            return productCount > 0;
         }
 
-        internal static object CreateProduct(string name, decimal price, string description, object quantity)
+        public static Product CreateProduct(Product product)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrWhiteSpace(product.Name))
+                throw new ArgumentException("Product name cannot be empty", nameof(product.Name));
+
+
+            if (string.IsNullOrWhiteSpace(product.Description))
+                throw new ArgumentException("Product description cannot be empty", nameof(product.Description));
+
+
+            if (product.Price < 0)
+                throw new ArgumentException("Price cannot be negative", nameof(product.Price));
+
+
+            if (product.StockQuantity < 0)
+                throw new ArgumentException("Quantity cannot be negative", nameof(product.StockQuantity));
+
+
+            return new Product
+            {
+                Name = product.Name,
+                Price = product.Price,
+                Description = product.Description,
+                StockQuantity = product.StockQuantity  // Default stock quantity is set to zero
+            };
         }
     }
 }

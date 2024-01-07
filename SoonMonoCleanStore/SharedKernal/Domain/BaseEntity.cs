@@ -12,7 +12,6 @@ namespace SharedKernal.Domain
         public long CreatedBy { get; set; }
         public DateTime ModifiedDate { get; set; }
         public long ModifiedBy { get; set; }
-
         public Guid RowVersion { get; set; }
 
     }

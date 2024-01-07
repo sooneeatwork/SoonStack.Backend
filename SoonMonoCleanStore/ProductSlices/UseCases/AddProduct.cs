@@ -26,15 +26,16 @@
 
         public async Task<Result<int>> Handle(AddProductCommand request, CancellationToken cancellationToken)
         {
+            ArgumentNullException.ThrowIfNull(request);
             Result<int> result;
 
             try
             {
-                ArgumentNullException.ThrowIfNull(request);
+                
                 var productCount = await _productRepository.GetCountByProductNameAsync(request.Name);
 
                 if (Product.IsProductExists(productCount))
-                    return Result<int>.Failure($"Product with Nmae {request.Name} existed.");
+                    return Result<int>.Failure($"Product with Name {request.Name} existed.");
 
                 var product = Product.CreateProduct(request.Name, request.Price, request.Description, request.Quantity);
                 var productTableData = _productTableMappers.CreateMapForInsert(product);
