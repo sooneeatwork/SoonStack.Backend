@@ -50,6 +50,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingCartSlices", "Shopp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanStoreTest", "CleanStoreTest\CleanStoreTest.csproj", "{FB0AA24C-7B78-46C8-A7F9-DF2A75925346}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Development Log", "Development Log", "{6D1241FD-9374-42A8-9692-EC6F6ACD61C5}"
+	ProjectSection(SolutionItems) = preProject
+		Add new Product 001.md = Add new Product 001.md
+		Add new Product 002.md = Add new Product 002.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -149,6 +155,7 @@ Global
 		{E8D61C8F-4831-4207-B1A8-B917A70E05C1} = {5F7130DB-E224-4272-8A09-9D71FFB5FC64}
 		{F3E065DF-9E82-47FE-899B-7D86C350B533} = {5F7130DB-E224-4272-8A09-9D71FFB5FC64}
 		{AAC37407-137D-48CE-A32D-A93A35AF467A} = {5F7130DB-E224-4272-8A09-9D71FFB5FC64}
+		{6D1241FD-9374-42A8-9692-EC6F6ACD61C5} = {89D25C5C-029A-4D4D-9FA2-5B031D8C1D67}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6C24FCC5-66E0-4FE0-B671-EEBD42E53CF4}
