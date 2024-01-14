@@ -49,6 +49,8 @@ namespace ProductMgmtSlices.Domain
             };
         }
 
+
+
         internal void RemoveStock(int purchasedQty)
         {
             throw new NotImplementedException();
@@ -80,6 +82,20 @@ namespace ProductMgmtSlices.Domain
             Price = newPrice;
             StockQuantity = newStockQuantity;
             Description = newDescription;
+        }
+
+        public static (bool IsValid, string ErrorMessage) Validate(Product product)
+        {
+            if (string.IsNullOrWhiteSpace(product.Name))
+                return (false, "Product name cannot be empty");
+            if (string.IsNullOrWhiteSpace(product.Description))
+                return (false, "Product description cannot be empty");
+            if (product.Price < 0)
+                return (false, "Price cannot be negative");
+            if (product.StockQuantity < 0)
+                return (false, "Quantity cannot be negative");
+
+            return (true, string.Empty);
         }
     }
 }

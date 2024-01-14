@@ -29,41 +29,36 @@
 
         public async Task<Result<long>> Handle(AddProductCommand request, CancellationToken cancellationToken)
         {
-            Result<long> result;
-            _logger.LogInformation($"Start to handler {nameof(AddProductCommand)}");
+            _logger.LogInformation($"Start handling {nameof(AddProductCommand)}");
 
             try
             {
-                var productCount = await _productRepository.GetCountByProductNameAsync(request.Name);
+                var product = _mapper.Map<AddProductCommand, Product>(request);
+                var (isValid, errorMessage) = Product.Validate(product);
 
-                if (Product.IsProductExists(productCount))
-                    return Result<long>.Failure($"Product with Name {request.Name} exist.");
+                if (!isValid)
+                    return Result<long>.Failure(errorMessage);
 
-                var mappedProduct = _mapper.Map<AddProductCommand,Product>(request);
-                var newProduct =  Product.CreateProduct(mappedProduct);
-                var productData = _productTableMappers.MapToTableForInsert(newProduct);
+                if (await _productRepository.GetCountByProductNameAsync(request.Name) > 0)
+                    return Result<long>.Failure($"Product with Name {request.Name} already exists.");
+
+                var productData = _productTableMappers.MapToTableForInsert(product);
 
                 long productId = await _genericRepository.InsertOneGetIdPgAsync<ProductTable>(productData);
                 _logger.LogInformation($"Product added with ID: {productId}");
-                result =  Result<long>.Success(productId);
-            }
-            catch (ArgumentNullException ex)
-            {
-                _logger.LogError(nameof(AddProductCommand), ex);
-                result = Result<long>.Failure($"request is null: {ex.Message}");
+
+                return Result<long>.Success(productId);
             }
             catch (DbException ex)
             {
-                _logger.LogError(nameof(AddProductCommand), ex);
-                result = Result<long>.Failure($"Database error : {ex.Message}");
+                _logger.LogError($"Database error in {nameof(AddProductCommand)}", ex);
+                return Result<long>.Failure("Database error");
             }
             catch (Exception ex)
             {
-                _logger.LogError(nameof(AddProductCommand), ex);
-                result =  Result<long>.Failure($"An error occurred: {ex.Message}");
+                _logger.LogError($"Error in {nameof(AddProductCommand)}", ex);
+                return Result<long>.Failure("An error occurred");
             }
-
-            return result;
         }
 
     }
