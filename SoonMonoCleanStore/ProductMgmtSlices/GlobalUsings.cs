@@ -9,3 +9,4 @@ global using ProductMgmtSlices.Repository.DatabaseModel;
 global using SharedKernel.UseCases.MapperInterface;
 global using SharedKernal.Domain;
 global using System.Runtime.CompilerServices;
+global using System.Data.Common;

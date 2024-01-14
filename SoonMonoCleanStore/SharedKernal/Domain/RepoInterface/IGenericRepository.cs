@@ -13,6 +13,9 @@ namespace SharedKernel.Domain.RepoInterface
 
         Task<int> InsertOneAsync<TEntity>(Dictionary<string, object> data, IDbTransaction? transaction = null) where TEntity : class;
         Task<long> InsertOneGetIdAsync<TEntity>(Dictionary<string, object> data, IDbTransaction? transaction = null) where TEntity : class;
+
+        Task<long> InsertOneGetIdPgAsync<TEntity>(Dictionary<string, object> data, IDbTransaction? transaction = null) where TEntity : class;
+
         Task<int> InsertManyAsync<TEntity>(IEnumerable<Dictionary<string, object>> data, IDbTransaction? transaction = null) where TEntity : class;
 
         Task<int> UpdateOneAsync<TEntity>(Dictionary<string, object> dataFields, Dictionary<string, object> whereClause, IDbTransaction? transaction = null) where TEntity : class;

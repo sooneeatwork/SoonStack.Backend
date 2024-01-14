@@ -15,7 +15,7 @@
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
     <ProjectReference Include="..\OrderSlices\OrderSlices.csproj" />
     <ProjectReference Include="..\Persistance\DapperPersistance.csproj" />
-    <ProjectReference Include="..\ProductSlices\ProductSlices.csproj" />
+    <ProjectReference Include="..\ProductMgmtSlices\ProductMgmtSlices.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,8 +1,6 @@
-﻿using ProductSlices.UseCases;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Threading.Tasks;
+using ProductMgmtSlices.UseCases;
 
 namespace RestApi.Controllers.ProductController
 {
@@ -38,18 +36,20 @@ namespace RestApi.Controllers.ProductController
             }
         }
 
-        [HttpGet]
-        [Route("SearchAllProducts")]
-        public async Task<IActionResult> SearchAllProducts()
+
+        [HttpPut]
+        [Route("EditProduct")]
+        public async Task<IActionResult> EditProduct([FromBody] EditProductCommand command)
         {
             try
             {
-                var result = await _mediator.Send(new SearchAllProductQuery());
+
+                var result = await _mediator.Send(command);
 
                 if (result.IsSuccess)
                     return Ok(result);
                 else
-                    return NotFound(result);
+                    return BadRequest(result);
             }
             catch (Exception ex)
             {
@@ -58,25 +58,45 @@ namespace RestApi.Controllers.ProductController
             }
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> SearchProductById(long id)
-        {
-            try
-            {
-                var query = new SearchProductByIdQuery(id);
-                var result = await _mediator.Send(query);
+        //[HttpGet]
+        //[Route("SearchAllProducts")]
+        //public async Task<IActionResult> SearchAllProducts()
+        //{
+        //    try
+        //    {
+        //        var result = await _mediator.Send(new SearchAllProductQuery());
 
-                if (result.IsSuccess)
-                    return Ok(result);
-                else
-                    return NotFound(result);
-            }
-            catch (Exception ex)
-            {
-                // Log the exception details
-                return StatusCode(500, "An error occurred while processing your request: " + ex.Message);
-            }
-        }
+        //        if (result.IsSuccess)
+        //            return Ok(result);
+        //        else
+        //            return NotFound(result);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // Log the exception details
+        //        return StatusCode(500, "An error occurred while processing your request: " + ex.Message);
+        //    }
+        //}
+
+        //[HttpGet("{id}")]
+        //public async Task<IActionResult> SearchProductById(long id)
+        //{
+        //    try
+        //    {
+        //        var query = new SearchProductByIdQuery(id);
+        //        var result = await _mediator.Send(query);
+
+        //        if (result.IsSuccess)
+        //            return Ok(result);
+        //        else
+        //            return NotFound(result);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // Log the exception details
+        //        return StatusCode(500, "An error occurred while processing your request: " + ex.Message);
+        //    }
+        //}
     }
 
 }

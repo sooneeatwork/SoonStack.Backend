@@ -60,6 +60,16 @@ namespace DapperPersistence
             return await _connection.ExecuteScalarAsync<long>(sql, data, transaction);
         }
 
+        public async Task<long> InsertOneGetIdPgAsync<TEntity>(Dictionary<string, object> data, IDbTransaction? transaction = null) where TEntity : class
+        {
+            var tableName = DatabaseUtil.GetTableName<TEntity>();
+            var columns = string.Join(", ", data.Keys);
+            var values = string.Join(", ", data.Keys.Select(k => "@" + k));
+            var sql = $"INSERT INTO {tableName} ({columns}) VALUES ({values}) RETURNING id;";
+
+            return await _connection.ExecuteScalarAsync<long>(sql, data, transaction);
+        }
+
         public async Task<int> InsertManyAsync<TEntity>(IEnumerable<Dictionary<string, object>> dataList, IDbTransaction? transaction = null) where TEntity : class
         {
            

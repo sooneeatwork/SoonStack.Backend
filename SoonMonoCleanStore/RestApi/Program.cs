@@ -2,7 +2,7 @@ using CustomerSlices.DependencyManagement;
 using DapperPersistance.DepedencyManagement;
 using Infrastructure.Dependency;
 using OrderSlices.DependencyInjection;
-using ProductSlices.DepdencyInjection;
+using ProductMgmtSlices.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -4,6 +4,7 @@ namespace ProductMgmtSlices.Domain
     public class Product : BaseEntity
     {
         // Properties specific to Product
+        public long Id { get; internal set; }
         public string Name { get; internal set; } = string.Empty;
         public string Description { get; internal set; } = string.Empty;
         public decimal Price { get; internal set; } 
@@ -46,6 +47,39 @@ namespace ProductMgmtSlices.Domain
                 Description = product.Description,
                 StockQuantity = product.StockQuantity  // Default stock quantity is set to zero
             };
+        }
+
+        internal void RemoveStock(int purchasedQty)
+        {
+            throw new NotImplementedException();
+        }
+
+       
+
+        public void UpdateProductInfo(string newName,
+                                      string newDescription,
+                                      decimal newPrice,
+                                      int newStockQuantity)
+        {
+            if (newStockQuantity < 0)
+            {
+                throw new ArgumentException("Quantity cannot be negative", nameof(newStockQuantity));
+            }
+
+            if (newPrice < 0)
+            {
+                throw new ArgumentException("Price cannot be negative", nameof(newPrice));
+            }
+
+            if (string.IsNullOrWhiteSpace(newName))
+            {
+                throw new ArgumentException("Name cannot be empty", nameof(newName));
+            }
+
+            Name = newName;
+            Price = newPrice;
+            StockQuantity = newStockQuantity;
+            Description = newDescription;
         }
     }
 }

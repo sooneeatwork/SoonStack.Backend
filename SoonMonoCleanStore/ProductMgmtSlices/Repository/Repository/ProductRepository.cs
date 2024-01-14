@@ -18,7 +18,7 @@ namespace ProductMgmtSlices.Repository.Repository
             int result = -1;
 
             var query = new Query(ProductTable.TableName)
-                              .Where(nameof(ProductTable.Name), name)
+                              .Where(nameof(ProductTable.name), name)
                               .AsCount();
 
             Dictionary<string, object> parameter = new Dictionary<string, object>()
@@ -40,8 +40,8 @@ namespace ProductMgmtSlices.Repository.Repository
             int result;
 
             var query = new Query(ProductTable.TableName)
-                              .Where(nameof(ProductTable.Id), productId)
-                              .Select(nameof(ProductTable.StockQuantity));
+                              .Where(nameof(ProductTable.id), productId)
+                              .Select(nameof(ProductTable.stock_quantity));
 
 
             Dictionary<string, object> parameter = new Dictionary<string, object>()

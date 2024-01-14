@@ -57,7 +57,7 @@ namespace DapperPersistance.DatabaseQueryExecutor
 
         public string GetParameterPlaceHolder()
         {
-            return "@p@";
+            return "@p0";
         }
     }
 }

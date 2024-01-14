@@ -1,6 +1,4 @@
-﻿using System.Data.Common;
-
-namespace ProductMgmtSlices.UseCases
+﻿namespace ProductMgmtSlices.UseCases
 {
     public record AddProductCommand(
       string Name,
@@ -45,7 +43,7 @@ namespace ProductMgmtSlices.UseCases
                 var newProduct =  Product.CreateProduct(mappedProduct);
                 var productData = _productTableMappers.MapToTableForInsert(newProduct);
 
-                long productId = await _genericRepository.InsertOneGetIdAsync<ProductTable>(productData);
+                long productId = await _genericRepository.InsertOneGetIdPgAsync<ProductTable>(productData);
                 _logger.LogInformation($"Product added with ID: {productId}");
                 result =  Result<long>.Success(productId);
             }
