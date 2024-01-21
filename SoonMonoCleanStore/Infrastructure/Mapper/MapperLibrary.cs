@@ -17,6 +17,11 @@ namespace Infrastructure.Mapper
             return sourceList.Adapt<IEnumerable<TDestination>>();
         }
 
+        public IEnumerable<T2> MapEnumerable<T1, T2>(IEnumerable<IEnumerable<T1>> sourceList)
+        {
+            return sourceList.Adapt<IEnumerable<T2>>();
+        }
+
         public List<TDestination> MapList<TSource, TDestination>(List<TSource> sourceList)
         {
             return sourceList.Adapt<List<TDestination>>();

@@ -30,7 +30,7 @@ namespace DapperPersistance.DatabaseQueryExecutor
             return await _connection.QueryFirstOrDefaultAsync<TEntity>(sql, parameter);
         }
 
-     
+
 
         public async Task<IEnumerable<TEntity>> ExecuteQueryToListAsync<TEntity>(Dictionary<string, object> parameter, Query query)
         {
@@ -46,8 +46,8 @@ namespace DapperPersistance.DatabaseQueryExecutor
             try
             {
                 var sql = _compiler.Compile(query);
-                
-                result =  await _connection.ExecuteScalarAsync<int>(sql, parameter);
+
+                result = await _connection.ExecuteScalarAsync<int>(sql, parameter);
             }
             catch { throw; }
 
@@ -59,5 +59,26 @@ namespace DapperPersistance.DatabaseQueryExecutor
         {
             return "@p0";
         }
+
+        public string GetParameterPlaceHolder(int index)
+        {
+            return $"@p{index}";
+        }
+
+        public Dictionary<string, object> CreateParameterDictionary(params object[] parameters)
+        {
+
+            ArgumentNullException.ThrowIfNull(parameters);
+
+            var parameterDict = new Dictionary<string, object>();
+
+            for (int i = 0; i < parameters.Length; i++)
+            {
+                string placeholder = $"p{i}";
+                parameterDict.Add(placeholder, parameters[i]);
+            }
+            return parameterDict;
+        }
+
     }
 }

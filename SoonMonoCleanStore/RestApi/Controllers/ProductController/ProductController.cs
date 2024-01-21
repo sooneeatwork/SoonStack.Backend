@@ -58,25 +58,29 @@ namespace RestApi.Controllers.ProductController
             }
         }
 
-        //[HttpGet]
-        //[Route("SearchAllProducts")]
-        //public async Task<IActionResult> SearchAllProducts()
-        //{
-        //    try
-        //    {
-        //        var result = await _mediator.Send(new SearchAllProductQuery());
+        [HttpGet]
+        [Route("SearchProducts")]
+        public async Task<IActionResult> SearchAllProducts([FromQuery]SearchProductsQuery searchProductsQuery)
+        {
+            try
+            {
+                var result = await _mediator.Send(new SearchProductsQuery(searchProductsQuery.ProductName,
+                                                                          searchProductsQuery.MinPrice,
+                                                                          searchProductsQuery.MaxPrice,
+                                                                          searchProductsQuery.PageNumber,
+                                                                          searchProductsQuery.PageSize));
 
-        //        if (result.IsSuccess)
-        //            return Ok(result);
-        //        else
-        //            return NotFound(result);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        // Log the exception details
-        //        return StatusCode(500, "An error occurred while processing your request: " + ex.Message);
-        //    }
-        //}
+                if (result.IsSuccess)
+                    return Ok(result);
+                else
+                    return NotFound(result);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception details
+                return StatusCode(500, "An error occurred while processing your request: " + ex.Message);
+            }
+        }
 
         //[HttpGet("{id}")]
         //public async Task<IActionResult> SearchProductById(long id)

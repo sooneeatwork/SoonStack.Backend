@@ -6,5 +6,6 @@ namespace ProductMgmtSlices.Domain.RepoInterface
     {
         Task<int> GetCountByProductNameAsync(string name);
         Task<int> GetStockCountByIdAsync(int productId);
+        Task<IEnumerable<ProductTable>?> SearchAsync(string productName, decimal? minPrice, decimal? maxPrice, int pageNumber, int pageSize);
     }
 }
