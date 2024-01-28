@@ -1,4 +1,6 @@
-﻿namespace ProductSlices.UseCases
+﻿using ProductSlices.Repository.Repository.ProductRepo;
+
+namespace ProductSlices.UseCases
 {
     public record AddProductCommand(
         string Name,

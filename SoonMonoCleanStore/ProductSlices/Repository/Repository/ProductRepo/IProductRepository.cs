@@ -1,4 +1,4 @@
-﻿namespace ProductSlices.Repository.Repository
+﻿namespace ProductSlices.Repository.Repository.ProductRepo
 {
     public interface IProductRepository : IGenericRepository
     {

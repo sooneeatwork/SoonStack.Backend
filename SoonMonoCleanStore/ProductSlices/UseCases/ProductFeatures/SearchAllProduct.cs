@@ -1,7 +1,8 @@
-﻿using SharedKernel.UseCases.Wrapper;
+﻿using ProductSlices.Repository.Repository.ProductRepo;
+using SharedKernel.UseCases.Wrapper;
 using System.Collections.Generic;
 
-namespace ProductSlices.UseCases
+namespace ProductSlices.UseCases.ProductFeatures
 {
     // Query to get all products
     public struct SearchAllProductQuery : IRequest<Result<IEnumerable<ProductDto>>> { }

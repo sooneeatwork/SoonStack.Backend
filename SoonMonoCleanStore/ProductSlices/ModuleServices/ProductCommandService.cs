@@ -1,4 +1,6 @@
-﻿namespace ProductSlices.ModuleServices
+﻿using ProductSlices.Repository.Repository.ProductRepo;
+
+namespace ProductSlices.ModuleServices
 {
     public class ProductCommandService : IProductCommandServices
     {

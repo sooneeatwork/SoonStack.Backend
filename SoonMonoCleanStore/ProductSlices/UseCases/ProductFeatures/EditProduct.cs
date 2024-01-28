@@ -1,4 +1,6 @@
-﻿namespace ProductSlices.UseCases
+﻿using ProductSlices.Repository.Repository.ProductRepo;
+
+namespace ProductSlices.UseCases.ProductFeatures
 {
 
     public record EditProductCommand(
