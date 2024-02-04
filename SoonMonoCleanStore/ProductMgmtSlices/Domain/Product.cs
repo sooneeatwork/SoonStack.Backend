@@ -58,11 +58,12 @@ namespace ProductMgmtSlices.Domain
 
        
 
-        public void UpdateProductInfo(string newName,
-                                      string newDescription,
-                                      decimal newPrice,
-                                      int newStockQuantity)
+        public  void UpdateProductInfo(string newName,
+                                             string newDescription,
+                                             decimal newPrice,
+                                             int newStockQuantity)
         {
+            Product product = new Product();
             if (newStockQuantity < 0)
             {
                 throw new ArgumentException("Quantity cannot be negative", nameof(newStockQuantity));

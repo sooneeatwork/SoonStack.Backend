@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ProductMgmtSlices.UseCases
+﻿namespace ProductMgmtSlices.UseCases.ProductUseCases
 {
     public record EditProductCommand(
        int ProductId,
@@ -48,9 +42,9 @@ namespace ProductMgmtSlices.UseCases
 
                 var product = _productTableMapper.MapToDomain(productData);
                 product.UpdateProductInfo(request.NewName,
-                                            request.NewDescription,
-                                            request.NewPrice,
-                                            request.NewStockQuantity);
+                                          request.NewDescription,
+                                          request.NewPrice,
+                                          request.NewStockQuantity);
 
 
                 var (dataFields, whereClause) = _productTableMapper.CreateMapForUpdate(product, productData);

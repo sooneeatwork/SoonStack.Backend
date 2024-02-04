@@ -1,4 +1,4 @@
-﻿namespace ProductMgmtSlices.UseCases
+﻿namespace ProductMgmtSlices.UseCases.ProductUseCases
 {
     public record AddProductCommand(
       string Name,
@@ -42,7 +42,7 @@
                 if (await _productRepository.GetCountByProductNameAsync(request.Name) > 0)
                     return Result<long>.Failure($"Product with Name {request.Name} already exists.");
 
-                var productData = _productTableMappers.MapToTableForInsert(product);
+                var productData = _productTableMappers.CreateMapForInsert(product);
 
                 long productId = await _genericRepository.InsertOneGetIdPgAsync<ProductTable>(productData);
                 _logger.LogInformation($"Product added with ID: {productId}");

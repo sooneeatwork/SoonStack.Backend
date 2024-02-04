@@ -1,4 +1,4 @@
-﻿using ProductMgmtSlices.UseCases;
+﻿using ProductMgmtSlices.UseCases.ProductUseCases;
 using System;
 
 namespace ProductMgmtSlices.Repository.DatabaseModel

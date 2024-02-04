@@ -29,5 +29,6 @@ namespace SharedKernel.Domain.RepoInterface
         Task<IEnumerable<T>> ExecuteReadQueryAsync<T>(string sql, IDbTransaction? transaction = null);
         // Method for executing non-query SQL operation (insert, update, delete)
         Task<int> ExecuteNonQueryAsync(string sql, object param, IDbTransaction? transaction = null);
+        Task<int> GetCountByFieldsAsync<TEntity>(object field) where TEntity : class;
     }
 }

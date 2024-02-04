@@ -1,49 +1,68 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ProductMgmtSlices.Repository.ProductTableMapper
+﻿namespace ProductMgmtSlices.Repository.ProductTableMapper
 {
     public class ProductTableMappers : IProductTableMappers
     {
-        public object CreateMapForUpdateStockCount(List<Product> modifiedProductList)
+
+        public Dictionary<string, object> CreateMapForUpdate(Product product)
         {
-            throw new NotImplementedException();
+            Dictionary<string, object> result = new Dictionary<string, object>();
+
+            result.Add(nameof(ProductTable.id), product.Id);
+            return result;
         }
 
-        public Dictionary<string, object> MapToTableForInsert(Product product)
+        public Dictionary<string, object> CreateMapForInsert(Product product)
         {
-            if (product == null)
+            Dictionary<string, object> result = new Dictionary<string, object>();
+
+            result.Add(nameof(ProductTable.name), product.Name);
+            result.Add(nameof(ProductTable.price), product.Price);
+            result.Add(nameof(ProductTable.description), product.Description);
+            result.Add(nameof(ProductTable.stock_quantity), product.StockQuantity);
+
+            return result;
+        }
+
+        public IEnumerable<Dictionary<string, object>> CreateMap(IReadOnlyList<Product> productList)
+        {
+            List<Dictionary<string, object>> result = new List<Dictionary<string, object>>();
+
+            foreach (var product in productList)
             {
-                throw new ArgumentNullException(nameof(product), "Product cannot be null");
+                Dictionary<string, object> keyValuePairs = new Dictionary<string, object>
+                {
+                    { nameof(product.StockQuantity), product.StockQuantity }
+                };
+
+                result.Add(keyValuePairs);
             }
 
-            product.CreatedDate = DateTime.Now;
-            product.CreatedBy = 1;
-            product.ModifiedDate = DateTime.Now;
-            product.ModifiedBy = 1;
-
-              var propertyMap = new Dictionary<string, object>
-            {
-                { nameof(ProductTable.name), product.Name },
-                { nameof(ProductTable.description), product.Description },
-                { nameof(ProductTable.price), product.Price },
-                { nameof(ProductTable.stock_quantity), product.StockQuantity },
-                { nameof(ProductTable.modified_by), product.ModifiedBy },
-                { nameof(ProductTable.modified_date), product.ModifiedDate },
-                { nameof(ProductTable.created_by), product.CreatedBy },
-                { nameof(ProductTable.created_date), product.CreatedDate }
-                // Map other properties if needed...
-            };
-
-            return propertyMap;
+            return result;
         }
 
+        public IEnumerable<Dictionary<string, object>>
+            CreateMapForUpdateStockCount(List<Product> productList)
+        {
+            List<Dictionary<string, object>> dataFields = new List<Dictionary<string, object>>();
+
+            foreach (var product in productList)
+            {
+                Dictionary<string, object> keyValuePairs = new Dictionary<string, object>
+                {
+                    { nameof(product.Id), product.Id },
+                    { nameof(product.StockQuantity), product.StockQuantity }
+                };
+
+                dataFields.Add(keyValuePairs);
+            }
+
+            return dataFields;
+        }
+
+
         public (Dictionary<string, object> dataFields,
-                 Dictionary<string, object> whereClause)
-          CreateMapForUpdate(Product modifiedProduct, ProductTable originalProduct)
+                Dictionary<string, object> whereClause) 
+         CreateMapForUpdate(Product modifiedProduct, ProductTable originalProduct)
         {
             Dictionary<string, object> dataFields = new Dictionary<string, object>();
             Dictionary<string, object> whereClause = new Dictionary<string, object>();
@@ -62,32 +81,12 @@ namespace ProductMgmtSlices.Repository.ProductTableMapper
             if (modifiedProduct.StockQuantity != originalProduct.stock_quantity)
                 dataFields.Add(nameof(ProductTable.stock_quantity), modifiedProduct.StockQuantity);
 
-            dataFields.Add(nameof(ProductTable.modified_by), 1);
-            dataFields.Add(nameof(ProductTable.modified_date), DateTime.Now);
-
             return (dataFields, whereClause);
         }
 
-        public Product MapToDomain(ProductTable productTable)
+        public Product MapToDomain(ProductTable productData)
         {
-            if (productTable == null)
-            {
-                throw new ArgumentNullException(nameof(productTable), "product Table cannot be null");
-            }
-            
-
-            Product product = new Product();
-            product.Price = productTable.price;
-            product.Name = productTable.name;
-            product.Id = productTable.id;
-            product.CreatedBy = productTable.created_by.GetValueOrDefault();
-            product.CreatedDate = productTable.created_date;
-            product.ModifiedBy = productTable.modified_by.GetValueOrDefault();
-            product.ModifiedDate = productTable.modified_date;
-            product.Description = productTable.description;
-            product.StockQuantity = productTable.stock_quantity;    
-
-            return product;
+            throw new NotImplementedException();
         }
     }
 }

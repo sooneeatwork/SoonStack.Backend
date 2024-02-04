@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using ProductMgmtSlices.UseCases;
+using ProductMgmtSlices.UseCases.ProductUseCases;
 
 namespace RestApi.Controllers.ProductController
 {

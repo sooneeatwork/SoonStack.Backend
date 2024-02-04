@@ -1,11 +1,6 @@
 ﻿using SharedKernel.UseCases.QueryBase;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ProductMgmtSlices.UseCases
+namespace ProductMgmtSlices.UseCases.ProductUseCases
 {
     public record SearchProductsQuery(
         string ProductName,
@@ -66,7 +61,7 @@ namespace ProductMgmtSlices.UseCases
             }
         }
 
-     
+
     }
 
 

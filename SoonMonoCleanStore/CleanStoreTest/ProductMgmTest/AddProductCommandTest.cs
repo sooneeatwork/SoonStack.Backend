@@ -1,4 +1,6 @@
-﻿namespace CleanStoreTest.ProductMgmTest
+﻿using ProductMgmtSlices.UseCases.ProductUseCases;
+
+namespace CleanStoreTest.ProductMgmTest
 {
     public class AddProductCommandTests
     {
@@ -24,7 +26,7 @@
 
             var product = Product.CreateProduct(productObject);
             mapper.Map<AddProductCommand, Product>(Arg.Any<AddProductCommand>()).Returns(product);
-             var productTableData = productTableMappers.MapToTableForInsert(productObject);
+             var productTableData = productTableMappers.CreateMapForInsert(productObject);
 
             genericRepository.InsertOneGetIdAsync<ProductTable>(productTableData).Returns(Task.FromResult(1L));
 
