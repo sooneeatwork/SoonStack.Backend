@@ -11,8 +11,8 @@ namespace ProductMgmtSlices.UseCases.ProductCategoryUseCases
     public record EditProductCategoryCommand(
         int productCategoryId,
         string categoryName,
-        decimal categoryDescription,
-        int isActive) : IRequest<Result<int>>;
+        string categoryDescription,
+        bool isActive) : IRequest<Result<int>>;
 
 
 
@@ -48,8 +48,8 @@ namespace ProductMgmtSlices.UseCases.ProductCategoryUseCases
                     return Result<int>.Failure($"Product Category with ID {request.productCategoryId} not found.");
 
                 var productCategory = _productCategoryTableMapper.MapToDomain(productCategoryData);
-                productCategory.UpdateProductCategory(request.categoryDescription,
-                                                      request.categoryName,
+                productCategory.UpdateCategoryDetails(request.categoryName,
+                                                      request.categoryDescription,
                                                       request.isActive);
 
 

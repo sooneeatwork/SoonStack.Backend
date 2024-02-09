@@ -67,7 +67,19 @@
             return (isValid, errorMessage);
         }
 
-        internal void UpdateProductCategory(decimal categoryDescription, string categoryName, int isActive)
+        public void UpdateCategoryDetails(string categoryName, string categoryDescription, bool isActive)
+        {
+            if (string.IsNullOrWhiteSpace(categoryName) || string.IsNullOrWhiteSpace(categoryDescription))
+            {
+                throw new ArgumentException("CategoryName and CategoryDescription cannot be null or whitespace.");
+            }
+
+            CategoryName = categoryName;
+            CategoryDescription = categoryDescription;
+            IsActive = isActive;
+        }
+
+        public void AddSubCategory(ProductCategory childCategory)
         {
             throw new NotImplementedException();
         }
