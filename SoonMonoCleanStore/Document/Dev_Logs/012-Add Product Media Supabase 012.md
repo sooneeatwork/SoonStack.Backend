@@ -23,6 +23,7 @@ Backup and Recovery: Larger databases result in longer backup and recovery times
 https://dba.stackexchange.com/questions/2445/should-binary-files-be-stored-in-the-database
 
 **2. Storing on the Web Server's File System**
+
 Pros:
 
 Simplicity: Implementing file storage on a web server's file system is relatively straightforward and doesn't require much setup.
