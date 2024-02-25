@@ -1,9 +1,6 @@
----
-
+------------------------------------------------
 ## Log 012: Add Product Media Supabase 012
-
----
-Development Notes:
+------------------------------------------------
 
 Now, I will proceed to develop the product media upload module. Firstly, I need to determine a suitable storage solution for my media. I have three options:
 
