@@ -9,6 +9,7 @@ Now, I will proceed to develop the product media upload module. Firstly, I need 
 
 
 **1. Storing in a Database as a Blob**
+
 Pros:
 
 Centralization: Media files are stored alongside your other data, which can simplify backup and recovery processes.
