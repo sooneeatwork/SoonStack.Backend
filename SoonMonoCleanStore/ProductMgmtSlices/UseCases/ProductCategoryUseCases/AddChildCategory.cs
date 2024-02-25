@@ -1,11 +1,7 @@
-﻿using MediatR;
-using Microsoft.Extensions.Logging;
-using ProductMgmtSlices.Domain;
+﻿using Microsoft.Extensions.Logging;
 using ProductMgmtSlices.Repository.CategoryIHierarchyMappers;
 using ProductMgmtSlices.Repository.Repository.ProductCategoryRepo;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
+
 
 namespace ProductMgmtSlices.UseCases.ProductCategoryUseCases.Commands
 {

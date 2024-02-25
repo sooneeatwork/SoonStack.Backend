@@ -1,32 +1,49 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Infrastructure.StreamLibrary;
+
 
 namespace Infrastructure.MediaStorage
 {
     public class SupabaseStorageService : IMediaStorageServices
     {
-        private readonly Supabase.Client _supabaseClient;
 
-        public SupabaseStorageService(Supabase.Client supabaseClient)
+        private readonly Supabase.Client _supabaseClient;
+        private readonly IStreamProcessor _streamProcessor;
+
+        public SupabaseStorageService(Supabase.Client supabaseClient, IStreamProcessor streamProcessor)
         {
             _supabaseClient = supabaseClient;
+            _streamProcessor = streamProcessor;
         }
 
-        public async Task<string> UploadFileAsync(string bucketName, string fileName, Stream fileContent, string contentType)
+        public async Task<string> UploadFileAsync(string bucketName,
+                                                  string fileName, 
+                                                  Stream fileContent,
+                                                  string contentType)
         {
-            var storage = _supabaseClient.Storage.From(bucketName);
-            var uploadResult = await storage.UploadAsync(fileName, fileContent, contentType);
+            if (string.IsNullOrWhiteSpace(bucketName)) throw new ArgumentException("Bucket name must be provided.", nameof(bucketName));
+            if (string.IsNullOrWhiteSpace(fileName)) throw new ArgumentException("File name must be provided.", nameof(fileName));
+            if (fileContent == null) throw new ArgumentNullException(nameof(fileContent));
+            if (string.IsNullOrWhiteSpace(contentType)) throw new ArgumentException("Content type must be provided.", nameof(contentType));
+            string uploadResult = string.Empty;
 
-            if (uploadResult.Error != null)
+            try
             {
-                throw new Exception(uploadResult.Error.Message);
-            }
+                var storage = _supabaseClient.Storage.From(bucketName);
+                var fileContentByte = await _streamProcessor.ConvertStreamToByteArray(fileContent);
 
-            return uploadResult.Data.PublicUrl;
+                // Pseudo-code: Replace with actual method signature and parameters based on the library documentation.
+                uploadResult = await storage.Upload(fileContentByte,
+                                                       fileName,
+                                                       new Supabase.Storage.FileOptions { ContentType = contentType })
+                                                   .ConfigureAwait(false);
+            }
+            catch (Exception){ throw; }
+
+            return uploadResult;
         }
+
+     
+
     }
 
 }

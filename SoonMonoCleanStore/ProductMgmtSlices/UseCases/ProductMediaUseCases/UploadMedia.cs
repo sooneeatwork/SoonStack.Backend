@@ -32,6 +32,9 @@ namespace ProductMgmtSlices.UseCases.ProductMediaUseCases
                                                                        request.FileContent, 
                                                                        request.ContentType);
 
+                if (string.IsNullOrWhiteSpace(mediaUrl))
+                    return Result<string>.Failure("Failed to upload media.");
+
                 var productMedia = ProductMedia.CreateProductMedia(request.ProductId,
                                                                    mediaUrl,
                                                                    request.ContentType);
