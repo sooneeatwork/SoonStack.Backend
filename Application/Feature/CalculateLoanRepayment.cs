@@ -9,8 +9,7 @@ using System.Threading.Tasks;
 namespace LoanCalculator.Application.Feature
 {
     public record CalculateLoanRepaymentCommand(decimal Principal, 
-                                                int TenureYears, 
-                                                decimal AnnualInterestRate);
+                                                int TenureYears);
 
     public class CalculateLoanRepaymentCommandHandler
     {

@@ -54,7 +54,7 @@ namespace LoanCalculator.ConsoleApp
             Console.Write("Enter Annual Interest Rate: ");
             decimal annualInterestRate = decimal.Parse(Console.ReadLine());
 
-            var command = new CalculateLoanRepaymentCommand(principal, tenureYears, annualInterestRate);
+            var command = new CalculateLoanRepaymentCommand(principal, tenureYears);
             var handler = new CalculateLoanRepaymentCommandHandler();
             var result = handler.Handle(command);
 

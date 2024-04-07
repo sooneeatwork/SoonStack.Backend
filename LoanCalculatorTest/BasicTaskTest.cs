@@ -6,7 +6,7 @@ public class BasicLoanCalculationTests
     [Test]
     public void CalculateMonthlyRepayment_For95kOver5Years_ShouldReturnExpectedAmount()
     {
-        var command = new CalculateLoanRepaymentCommand(95000, 5, 6.5m);
+        var command = new CalculateLoanRepaymentCommand(95000, 5);
         var handler = new CalculateLoanRepaymentCommandHandler();
         var result = handler.Handle(command);
         Assert.IsTrue(result.IsSuccess);
@@ -16,7 +16,7 @@ public class BasicLoanCalculationTests
     [Test]
     public void CalculateMonthlyRepayment_WithNegativePrincipal_ShouldReturnError()
     {
-        var command = new CalculateLoanRepaymentCommand(-95000, 5, 6.5m);
+        var command = new CalculateLoanRepaymentCommand(-95000, 5);
         var handler = new CalculateLoanRepaymentCommandHandler();
         var result = handler.Handle(command);
         Assert.IsFalse(result.IsSuccess);

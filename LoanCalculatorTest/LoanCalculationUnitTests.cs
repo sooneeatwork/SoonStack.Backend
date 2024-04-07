@@ -8,7 +8,7 @@ namespace LoanCalculatorTest
         public void CalculateMonthlyRepayment_For95kOver5Years_ShouldReturnExpectedAmount()
         {
             // Arrange
-            var command = new CalculateLoanRepaymentCommand(95000, 5, 6.5m); // Corrected to 6.5% annual interest rate.
+            var command = new CalculateLoanRepaymentCommand(95000, 5); // Corrected to 6.5% annual interest rate.
             var handler = new CalculateLoanRepaymentCommandHandler();
 
             // Act
@@ -59,7 +59,7 @@ namespace LoanCalculatorTest
         [Test]
         public void CalculateMonthlyRepayment_WithNegativeValues_ShouldReturnError()
         {
-            var command = new CalculateLoanRepaymentCommand(-95000, 5, 6.5m); // Invalid principal amount
+            var command = new CalculateLoanRepaymentCommand(-95000, 5); // Invalid principal amount
             var handler = new CalculateLoanRepaymentCommandHandler();
 
             var result = handler.Handle(command);
