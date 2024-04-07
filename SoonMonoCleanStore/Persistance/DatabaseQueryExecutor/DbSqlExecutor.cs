@@ -22,6 +22,7 @@ namespace DapperPersistance.DatabaseQueryExecutor
         {
             _connection = connection;
             _compiler = compiler;
+            
         }
 
         public async Task<TEntity?> ExecuteQueryAsync<TEntity>(Dictionary<string, object> parameter, Query query)
