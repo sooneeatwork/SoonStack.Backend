@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SharedKernel.Domain.DomainModel.ProductModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

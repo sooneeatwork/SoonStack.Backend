@@ -1,4 +1,5 @@
-﻿using SharedKernel.Domain.DomainModel.ProductModel;
+﻿using ProductMgmtSlices.UseCases.ProductUseCases;
+using SharedKernel.Domain.DomainModel.ProductModel;
 using System;
 
 namespace ProductMgmtSlices.Repository.DatabaseModel
@@ -7,29 +8,39 @@ namespace ProductMgmtSlices.Repository.DatabaseModel
     {
         // Corresponding to the database fields
         public const string TableName = "Products.Products";
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public decimal Price { get; set; }
-        public int StockQuantity { get; set; }
-        public int? CreatedBy { get; set; }
-        public int? ModifiedBy { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public DateTime ModifiedDate { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
+        public string description { get; set; }
+        public decimal price { get; set; }
+        public int stock_quantity { get; set; }
+        public int? created_by { get; set; }
+        public int? modified_by { get; set; }
+        public DateTime created_date { get; set; }
+        public DateTime modified_date { get; set; }
 
-     
-
-        // Constructor for initializing a new instance
-        public ProductTable(string name, string description, decimal price, int stockQuantity, int? createdBy = null, int? modifiedBy = null, DateTime? createdDate = null, DateTime? modifiedDate = null)
+        internal static IEnumerable<ProductDto> ToProductDTO(IEnumerable<ProductTable> products)
         {
-            Name = name;
-            Description = description;
-            Price = price;
-            StockQuantity = stockQuantity;
-            CreatedBy = createdBy;
-            ModifiedBy = modifiedBy;
-            CreatedDate = createdDate ?? DateTime.UtcNow;
-            ModifiedDate = modifiedDate ?? DateTime.UtcNow;
+            throw new NotImplementedException();
+        }
+
+        public Dictionary<string, object> CreateMapForInsert(Product product)
+        {
+            throw new NotImplementedException();
+        }
+
+        public (Dictionary<string, object> dataFields, Dictionary<string, object> whereClause) CreateMapForUpdate(Product product, ProductTable productData)
+        {
+            throw new NotImplementedException();
+        }
+
+        public object CreateMapForUpdateStockCount(List<Product> modifiedProductList)
+        {
+            throw new NotImplementedException();
+        }
+
+        public object MapToDomain(ProductTable productData)
+        {
+            throw new NotImplementedException();
         }
 
         public Dictionary<string, object> MapToTableForInsert(Product product)
@@ -53,6 +64,16 @@ namespace ProductMgmtSlices.Repository.DatabaseModel
             };
 
             return propertyMap;
+        }
+
+        Product IProductTableMappers.CreateMapForUpdateStockCount(List<Product> modifiedProductList)
+        {
+            throw new NotImplementedException();
+        }
+
+        Product IProductTableMappers.MapToDomain(ProductTable productData)
+        {
+            throw new NotImplementedException();
         }
 
         // Additional methods if needed for database-related operations

@@ -1,4 +1,5 @@
-﻿using SharedKernel.Domain.DomainModel.ProductModel;
+﻿using ProductMgmtSlices.Domain.RepoInterface;
+using SharedKernel.Domain.DomainModel.ProductModel;
 
 namespace ProductSlices.UseCases
 {
@@ -39,7 +40,7 @@ namespace ProductSlices.UseCases
                 if (Product.IsProductExists(productCount))
                     return Result<int>.Failure($"Product with Name {request.Name} existed.");
 
-                var product = Product.CreateProduct(request.Name, request.Price, request.Description, request.Quantity);
+                var product = Product.CreateProduct(request.Name, request.Description, request.Price,request.Quantity);
                 var productTableData = _productTableMappers.CreateMapForInsert(product);
                 int productId = await _genericRepository.InsertOneAsync<ProductTable>(productTableData);
 

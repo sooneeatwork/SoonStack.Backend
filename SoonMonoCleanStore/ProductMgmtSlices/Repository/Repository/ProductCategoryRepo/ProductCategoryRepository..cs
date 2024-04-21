@@ -1,5 +1,6 @@
 ﻿using DapperPersistance.DatabaseQueryExecutor;
 using DapperPersistence;
+using SharedKernel.Domain.DomainModel.ProductModel;
 using SqlKata;
 using System.Data;
 
@@ -10,6 +11,21 @@ namespace ProductMgmtSlices.Repository.Repository.ProductCategoryRepo
     {
         public ProductCategoryReposirory(IDbConnection connection, IDbSqlExecutor dbExecutor) : base(connection, dbExecutor)
         {
+        }
+
+        public Task<long> AddCategoryHierarchyAsync(Dictionary<string, object> hierarchyData)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<ProductCategory>> GetAllWithHierarchyAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<ProductCategory>> GetChildCategoriesAsync(long parentCategoryId)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<int> GetCountByCategoryNameAsync(string categoryName)
@@ -30,6 +46,19 @@ namespace ProductMgmtSlices.Repository.Repository.ProductCategoryRepo
             return result;
         }
 
-        
+        public Task<(ProductCategory parentCategory, ProductCategory childCategory)> GetParentAndChildCategoriesAsync(long parentCategoryId, long childCategoryId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<(ProductCategory parentCategory, ProductCategory categoryToMove)> GetParentCategoriesAsync(long v, long newParentId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> MoveCategoryToNewParentAsync(ProductCategory categoryToMove, ProductCategory parentCategory)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using ProductMgmtSlices.Repository.CategoryIHierarchyMappers;
 using ProductMgmtSlices.Repository.Repository.ProductCategoryRepo;
-
+using SharedKernel.Domain.DomainModel.ProductModel;
 
 namespace ProductMgmtSlices.UseCases.ProductCategoryUseCases.Commands
 {

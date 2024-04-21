@@ -1,6 +1,6 @@
 ﻿using ProductSlices.Repository.ProductCategoryMapper;
 using ProductSlices.Repository.Repository.ProductCategoryRepo;
-
+using SharedKernel.Domain.DomainModel.ProductModel;
 
 namespace ProductSlices.UseCases.ProductCategoryFeatures
 {

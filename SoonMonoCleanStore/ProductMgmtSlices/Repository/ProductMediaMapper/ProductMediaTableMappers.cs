@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SharedKernel.Domain.DomainModel.ProductModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,9 @@ namespace ProductMgmtSlices.Repository.ProductMediaMapper
 {
     public class ProductMediaTableMappers : IProductMediaTableMappers
     {
+        public Dictionary<string, object> CreateMapForInsert(ProductMedia productMedia)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

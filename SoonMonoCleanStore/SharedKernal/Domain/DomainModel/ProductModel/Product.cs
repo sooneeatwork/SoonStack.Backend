@@ -3,86 +3,18 @@ namespace SharedKernel.Domain.DomainModel.ProductModel
 {
     public class Product : BaseEntity
     {
-        public long Id { get; set; }
-        public string Name { get; private set; } = string.Empty;
-        public decimal Price { get; private set; }
-        public string Description { get; private set; } = string.Empty;
-        public int StockQuantity { get; private set; }
+        // Properties specific to Product
+        public long Id { get; internal set; }
+        public string Name { get; internal set; } = string.Empty;
+        public string Description { get; internal set; } = string.Empty;
+        public decimal Price { get; internal set; }
+        public int StockQuantity { get; internal set; }
 
-        // Private constructor to enforce the use of the factory method
-
-
-        // Static factory method for creating a new product instance
-        public static Product CreateProduct(string name, decimal price, string description, int quantity)
+        // Methods to update the entity
+        public void UpdateStock(int quantity)
         {
-            if (string.IsNullOrWhiteSpace(name))
-            {
-                throw new ArgumentException("Product name cannot be empty", nameof(name));
-            }
-
-            if (price < 0)
-            {
-                throw new ArgumentException("Price cannot be negative", nameof(price));
-            }
-
-            if (quantity < 0)
-            {
-                throw new ArgumentException("Quantity cannot be negative", nameof(price));
-            }
-
-            return new Product
-            {
-                Name = name,
-                Price = price,
-                Description = description,
-                StockQuantity = quantity  // Default stock quantity is set to zero
-            };
-        }
-
-        // Methods to manipulate the product
-        public void UpdatePrice(decimal newPrice)
-        {
-            if (newPrice < 0)
-            {
-                throw new ArgumentException("Price cannot be negative", nameof(newPrice));
-            }
-
-            Price = newPrice;
-        }
-
-        public void UpdateDescription(string newDescription)
-        {
-            if (string.IsNullOrWhiteSpace(newDescription))
-            {
-                throw new ArgumentException("Description cannot be empty", nameof(newDescription));
-            }
-
-            Description = newDescription;
-        }
-
-        public void AddStock(int quantity)
-        {
-            if (quantity < 0)
-            {
-                throw new ArgumentException("Quantity cannot be negative", nameof(quantity));
-            }
-
-            StockQuantity += quantity;
-        }
-
-        public void RemoveStock(int quantity)
-        {
-            if (quantity < 0)
-            {
-                throw new ArgumentException("Quantity cannot be negative", nameof(quantity));
-            }
-
-            if (StockQuantity < quantity)
-            {
-                throw new InvalidOperationException("Insufficient stock to remove");
-            }
-
-            StockQuantity -= quantity;
+            // Implement logic to update stock
+            StockQuantity = quantity;
         }
 
         public static bool IsProductExists(int productCount)
@@ -90,11 +22,51 @@ namespace SharedKernel.Domain.DomainModel.ProductModel
             return productCount > 0;
         }
 
-        public void UpdateProductInfo(string newName,
-                                        string newDescription,
-                                        decimal newPrice,
-                                        int newStockQuantity)
+        public static Product CreateProduct(string name,
+                                            string description,
+                                            decimal price,
+                                            int stockQuantity)
         {
+            if (string.IsNullOrWhiteSpace(name))
+                throw new ArgumentException("Product name cannot be empty", nameof(name));
+
+
+            if (string.IsNullOrWhiteSpace(description))
+                throw new ArgumentException("Product description cannot be empty", nameof(description));
+
+
+            if (price < 0)
+                throw new ArgumentException("Price cannot be negative", nameof(price));
+
+
+            if (stockQuantity < 0)
+                throw new ArgumentException("Quantity cannot be negative", nameof(stockQuantity));
+
+
+            return new Product
+            {
+                Name = name,
+                Price = price,
+                Description = description,
+                StockQuantity = stockQuantity  // Default stock quantity is set to zero
+            };
+        }
+
+
+
+        public void RemoveStock(int purchasedQty)
+        {
+            throw new NotImplementedException();
+        }
+
+
+
+        public void UpdateProductInfo(string newName,
+                                             string newDescription,
+                                             decimal newPrice,
+                                             int newStockQuantity)
+        {
+            Product product = new Product();
             if (newStockQuantity < 0)
             {
                 throw new ArgumentException("Quantity cannot be negative", nameof(newStockQuantity));
@@ -114,6 +86,20 @@ namespace SharedKernel.Domain.DomainModel.ProductModel
             Price = newPrice;
             StockQuantity = newStockQuantity;
             Description = newDescription;
+        }
+
+        public static (bool IsValid, string ErrorMessage) Validate(Product product)
+        {
+            if (string.IsNullOrWhiteSpace(product.Name))
+                return (false, "Product name cannot be empty");
+            if (string.IsNullOrWhiteSpace(product.Description))
+                return (false, "Product description cannot be empty");
+            if (product.Price < 0)
+                return (false, "Price cannot be negative");
+            if (product.StockQuantity < 0)
+                return (false, "Quantity cannot be negative");
+
+            return (true, string.Empty);
         }
     }
 }

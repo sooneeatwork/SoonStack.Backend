@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SharedKernel.Domain.DomainModel.ProductModel;
 using SharedKernel.PersistanceShared;
 using SharedKernel.UseCases.ProductSlices;
 using System;

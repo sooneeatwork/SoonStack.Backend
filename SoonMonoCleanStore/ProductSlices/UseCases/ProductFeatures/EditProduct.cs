@@ -1,4 +1,5 @@
-﻿using SharedKernel.Domain.DomainModel.ProductModel;
+﻿using ProductMgmtSlices.Domain.RepoInterface;
+using SharedKernel.Domain.DomainModel.ProductModel;
 
 namespace ProductSlices.UseCases
 {

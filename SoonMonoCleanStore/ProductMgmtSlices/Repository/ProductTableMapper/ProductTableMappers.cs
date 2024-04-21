@@ -1,4 +1,6 @@
-﻿namespace ProductMgmtSlices.Repository.ProductTableMapper
+﻿using SharedKernel.Domain.DomainModel.ProductModel;
+
+namespace ProductMgmtSlices.Repository.ProductTableMapper
 {
     public class ProductTableMappers : IProductTableMappers
     {
@@ -85,6 +87,17 @@
         }
 
         public Product MapToDomain(ProductTable productData)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Dictionary<string, object> MapToTableForInsert(Product product)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        Product IProductTableMappers.CreateMapForUpdateStockCount(List<Product> modifiedProductList)
         {
             throw new NotImplementedException();
         }

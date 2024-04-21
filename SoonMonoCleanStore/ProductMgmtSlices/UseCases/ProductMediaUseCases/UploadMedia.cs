@@ -1,5 +1,6 @@
 ﻿using Infrastructure.MediaStorage;
 using ProductMgmtSlices.Repository.ProductMediaMapper;
+using SharedKernel.Domain.DomainModel.ProductModel;
 
 namespace ProductMgmtSlices.UseCases.ProductMediaUseCases
 {

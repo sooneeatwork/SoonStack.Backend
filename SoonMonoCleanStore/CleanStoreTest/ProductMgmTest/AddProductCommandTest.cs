@@ -1,4 +1,5 @@
-﻿using SharedKernel.Domain.DomainModel.ProductModel;
+﻿using ProductMgmtSlices.UseCases.ProductUseCases;
+using SharedKernel.Domain.DomainModel.ProductModel;
 
 namespace CleanStoreTest.ProductMgmTest
 {
@@ -18,7 +19,7 @@ namespace CleanStoreTest.ProductMgmTest
 
         
 
-            var product = Product.CreateProduct("Test Product", 100, "Description",10);
+            var product = Product.CreateProduct("Test Product",  "Description", 100,10);
             mapper.Map<AddProductCommand, Product>(Arg.Any<AddProductCommand>()).Returns(product);
              var productTableData = productTableMappers.MapToTableForInsert(product);
 

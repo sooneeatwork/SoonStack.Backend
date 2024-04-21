@@ -1,8 +1,8 @@
-﻿namespace ProductSlices.Domain
+﻿namespace SharedKernel.Domain.DomainModel.ProductModel
 {
-   
     public class ProductCategory : BaseEntity
     {
+        public int Id { get; set; }
         public string CategoryName { get; set; } = string.Empty;
         public string CategoryDescription { get; set; } = string.Empty;
         public bool IsActive { get; set; }
@@ -17,7 +17,7 @@
 
 
 
-        public static (List<string> validationErrors, ProductCategory productCategory) 
+        public static (List<string> validationErrors, ProductCategory productCategory)
          CreateProductCategory(string categoryName,
                                string categoryDescription,
                                bool isActive = true)
@@ -40,6 +40,48 @@
             return (validationErrors, productCategory);
         }
 
+        public static (bool isValid, string errorMessage) Validate(ProductCategory productCategory)
+        {
 
+            var errorMessages = new List<string>();
+
+            if (string.IsNullOrWhiteSpace(productCategory.CategoryName))
+            {
+                errorMessages.Add("CategoryName is required.");
+            }
+
+            if (string.IsNullOrWhiteSpace(productCategory.CategoryDescription))
+            {
+                errorMessages.Add("CategoryDescription is required.");
+            }
+
+            if (productCategory.SubCategories.Any(sub => sub.Id != productCategory.Id))
+            {
+                errorMessages.Add("All subcategories must have a correct reference to the parent category.");
+            }
+
+
+            bool isValid = !errorMessages.Any();
+            string errorMessage = isValid ? string.Empty : string.Join("; ", errorMessages);
+
+            return (isValid, errorMessage);
+        }
+
+        public void UpdateCategoryDetails(string categoryName, string categoryDescription, bool isActive)
+        {
+            if (string.IsNullOrWhiteSpace(categoryName) || string.IsNullOrWhiteSpace(categoryDescription))
+            {
+                throw new ArgumentException("CategoryName and CategoryDescription cannot be null or whitespace.");
+            }
+
+            CategoryName = categoryName;
+            CategoryDescription = categoryDescription;
+            IsActive = isActive;
+        }
+
+        public void AddSubCategory(ProductCategory childCategory)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -1,4 +1,7 @@
-﻿namespace ProductMgmtSlices.UseCases.ProductUseCases
+﻿using SharedKernel.Domain.DomainModel.ProductModel;
+using System.Data.Common;
+
+namespace ProductMgmtSlices.UseCases.ProductUseCases
 {
     public record AddProductCommand(
       string Name,

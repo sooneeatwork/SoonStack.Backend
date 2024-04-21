@@ -9,6 +9,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using IProductRepository = ProductSlices.Repository.Repository.ProductRepo.IProductRepository;
 
 namespace ProductSlices.DepdencyInjection
 {

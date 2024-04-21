@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using ProductMgmtSlices.Domain;
 using ProductMgmtSlices.Repository.Repository.ProductCategoryRepo;
+using SharedKernel.Domain.DomainModel.ProductModel;
 using SharedKernel.UseCases.Wrapper;
 using System;
 using System.Collections.Generic;

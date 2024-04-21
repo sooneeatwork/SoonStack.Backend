@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProductMgmtSlices.Domain
+namespace SharedKernel.Domain.DomainModel.ProductModel
 {
     public class ProductMedia
     {
@@ -12,7 +12,7 @@ namespace ProductMgmtSlices.Domain
         public string MediaUrl { get; private set; } = string.Empty;
         public string MediaType { get; private set; } = string.Empty;
 
-        internal static ProductMedia CreateProductMedia(long productId,
+        public static ProductMedia CreateProductMedia(long productId,
                                                         string mediaUrl,
                                                         string contentType)
         {

@@ -1,4 +1,5 @@
 ﻿using ProductMgmtSlices.UseCases.ProductCategoryUseCases.Queries;
+using SharedKernel.Domain.DomainModel.ProductModel;
 using System.Data;
 
 namespace ProductMgmtSlices.Domain.RepoInterface

@@ -1,7 +1,9 @@
 ﻿using ProductMgmtSlices.Repository.Repository.ProductCategoryRepo;
 using ProductSlices.Repository.ProductCategoryMapper;
+using SharedKernel.Domain.DomainModel.ProductModel;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
