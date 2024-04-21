@@ -15,7 +15,30 @@ namespace DapperPersistence
             _dbExecutor = dbSqlExecutor;
         }
 
-        public async Task<TEntity?> GetByIdAsync<TEntity>(long id) where TEntity : class 
+        public async Task<IEnumerable<T>> ExecuteReadQueryAsync<T>(string sql, IDbTransaction? transaction = null)
+        {
+            return await _connection.QueryAsync<T>(sql, transaction: transaction);
+        }
+
+        // Method for executing non-query SQL operation (insert, update, delete)
+        public async Task<int> ExecuteNonQueryAsync(string sql, object param, IDbTransaction? transaction = null)
+        {
+            return await _connection.ExecuteAsync(sql, param, transaction);
+        }
+
+        public async Task<int>
+        ExecuteStoredProcedureAsync<TEntity>(string storedProcedureName,
+                                             object parameters,
+                                             IDbTransaction? transaction = null) where TEntity : class
+        {
+            return await _connection.ExecuteAsync(
+                storedProcedureName,
+                parameters,
+                transaction,
+                commandType: CommandType.StoredProcedure);
+        }
+
+        public async Task<TEntity?> GetByIdAsync<TEntity>(long id) where TEntity : class
         {
             var tableName = DatabaseUtil.GetTableName<TEntity>();
             var sql = $"SELECT * FROM {tableName} WHERE Id = @Id";
@@ -33,7 +56,7 @@ namespace DapperPersistence
             return await _connection.QueryAsync<TEntity>(sql, new { Ids = idLists });
         }
 
-      
+
 
         public async Task<IEnumerable<TEntity>> GetAllAsync<TEntity>() where TEntity : class
         {
@@ -60,9 +83,19 @@ namespace DapperPersistence
             return await _connection.ExecuteScalarAsync<long>(sql, data, transaction);
         }
 
+        public async Task<long> InsertOneGetIdPgAsync<TEntity>(Dictionary<string, object> data, IDbTransaction? transaction = null) where TEntity : class
+        {
+            var tableName = DatabaseUtil.GetTableName<TEntity>();
+            var columns = string.Join(", ", data.Keys);
+            var values = string.Join(", ", data.Keys.Select(k => "@" + k));
+            var sql = $"INSERT INTO {tableName} ({columns}) VALUES ({values}) RETURNING id;";
+
+            return await _connection.ExecuteScalarAsync<long>(sql, data, transaction);
+        }
+
         public async Task<int> InsertManyAsync<TEntity>(IEnumerable<Dictionary<string, object>> dataList, IDbTransaction? transaction = null) where TEntity : class
         {
-           
+
             var tableName = DatabaseUtil.GetTableName<TEntity>();
             var totalCount = 0;
             foreach (var data in dataList)
@@ -89,22 +122,7 @@ namespace DapperPersistence
             return await _connection.ExecuteAsync(sql, parameterDict, transaction);
         }
 
-     
-
-        public async Task<int> 
-         ExecuteStoredProcedureAsync<TEntity>(string storedProcedureName,
-                                              object parameters,
-                                              IDbTransaction? transaction = null) where TEntity : class
-        {
-            return await _connection.ExecuteAsync(
-                storedProcedureName,
-                parameters,
-                transaction,
-                commandType: CommandType.StoredProcedure);
-        }
-
-
-        public async Task<int> DeleteOneAsync<TEntity>(Dictionary<string, object> data, 
+        public async Task<int> DeleteOneAsync<TEntity>(Dictionary<string, object> data,
                                                        IDbTransaction? transaction = null) where TEntity : class
         {
             var tableName = DatabaseUtil.GetTableName<TEntity>();
@@ -112,7 +130,7 @@ namespace DapperPersistence
             return await _connection.ExecuteAsync(sql, data, transaction);
         }
 
-        public async Task<int> DeleteManyAsync<TEntity>(IEnumerable<Dictionary<string, object>> dataList, 
+        public async Task<int> DeleteManyAsync<TEntity>(IEnumerable<Dictionary<string, object>> dataList,
                                                         IDbTransaction? transaction = null) where TEntity : class
         {
             var tableName = DatabaseUtil.GetTableName<TEntity>();
@@ -125,17 +143,16 @@ namespace DapperPersistence
             return totalCount;
         }
 
-        public async Task<IEnumerable<T>> ExecuteReadQueryAsync<T>(string sql, IDbTransaction? transaction = null)
+        public async Task<int> GetCountByFieldsAsync<TEntity>(object field) where TEntity : class
         {
-            return await _connection.QueryAsync<T>(sql, transaction: transaction);
+            var tableName = DatabaseUtil.GetTableName<TEntity>();
+            //var sql = $"SELECT * FROM {tableName} WHERE {nameof(fields).ToLowerInvariant()} = @Field";
+            var sql = $"SELECT * FROM {tableName} WHERE {nameof(field)} = @Field";
+            return await _connection.ExecuteScalarAsync<int>(sql, new { Field = field });
         }
 
-        // Method for executing non-query SQL operation (insert, update, delete)
-        public async Task<int> ExecuteNonQueryAsync(string sql, object param, IDbTransaction? transaction = null)
-        {
-            return await _connection.ExecuteAsync(sql, param, transaction);
-        }
 
-      
+
+
     }
 }

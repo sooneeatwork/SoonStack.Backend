@@ -13,6 +13,9 @@ namespace SharedKernel.Domain.RepoInterface
 
         Task<int> InsertOneAsync<TEntity>(Dictionary<string, object> data, IDbTransaction? transaction = null) where TEntity : class;
         Task<long> InsertOneGetIdAsync<TEntity>(Dictionary<string, object> data, IDbTransaction? transaction = null) where TEntity : class;
+
+        Task<long> InsertOneGetIdPgAsync<TEntity>(Dictionary<string, object> data, IDbTransaction? transaction = null) where TEntity : class;
+
         Task<int> InsertManyAsync<TEntity>(IEnumerable<Dictionary<string, object>> data, IDbTransaction? transaction = null) where TEntity : class;
 
         Task<int> UpdateOneAsync<TEntity>(Dictionary<string, object> dataFields, Dictionary<string, object> whereClause, IDbTransaction? transaction = null) where TEntity : class;
@@ -26,5 +29,6 @@ namespace SharedKernel.Domain.RepoInterface
         Task<IEnumerable<T>> ExecuteReadQueryAsync<T>(string sql, IDbTransaction? transaction = null);
         // Method for executing non-query SQL operation (insert, update, delete)
         Task<int> ExecuteNonQueryAsync(string sql, object param, IDbTransaction? transaction = null);
+        Task<int> GetCountByFieldsAsync<TEntity>(object field) where TEntity : class;
     }
 }

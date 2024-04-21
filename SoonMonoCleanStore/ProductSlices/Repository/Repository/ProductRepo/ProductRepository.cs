@@ -1,4 +1,4 @@
-﻿namespace ProductSlices.Repository.Repository
+﻿namespace ProductSlices.Repository.Repository.ProductRepo
 {
     public class ProductRepository : GenericRepository, IProductRepository
     {
@@ -35,7 +35,7 @@
             var query = new Query(ProductTable.TableName)
                               .Where(nameof(ProductTable.Id), productId)
                               .Select(nameof(ProductTable.StockQuantity));
-                            
+
 
             Dictionary<string, object> parameter = new Dictionary<string, object>()
             {

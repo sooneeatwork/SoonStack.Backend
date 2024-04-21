@@ -1,4 +1,6 @@
-﻿namespace ProductSlices.Repository.DatabaseModel
+﻿using ProductSlices.UseCases;
+
+namespace ProductSlices.Repository.DatabaseModel
 {
     public class ProductTable
     {
@@ -8,5 +10,9 @@
         public decimal Price { get; private set; }
         public string Description { get; private set; } = string.Empty;
         public int StockQuantity { get; private set; }
+
+
+       
+        
     }
 }

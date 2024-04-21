@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Logging
 {
-    
-
     public interface ILogger
     {
         void LogInformation(string message);

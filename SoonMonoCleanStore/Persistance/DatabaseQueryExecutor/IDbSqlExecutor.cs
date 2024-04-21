@@ -11,6 +11,10 @@ namespace DapperPersistance.DatabaseQueryExecutor
     {
         string GetParameterPlaceHolder();
 
+        string GetParameterPlaceHolder(int index);
+
+        Dictionary<string, object> CreateParameterDictionary(params object[] parameters);
+
         Task<TEntity?> ExecuteQueryAsync<TEntity>(Dictionary<string, object> parameter, Query query);
 
         Task<IEnumerable<TEntity>> ExecuteQueryToListAsync<TEntity>(Dictionary<string, object> parameter, Query query);

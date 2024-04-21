@@ -1,8 +1,6 @@
-﻿using ProductSlices.UseCases;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Threading.Tasks;
+using ProductMgmtSlices.UseCases.ProductUseCases;
 
 namespace RestApi.Controllers.ProductController
 {
@@ -38,13 +36,39 @@ namespace RestApi.Controllers.ProductController
             }
         }
 
+
+        [HttpPut]
+        [Route("EditProduct")]
+        public async Task<IActionResult> EditProduct([FromBody] EditProductCommand command)
+        {
+            try
+            {
+
+                var result = await _mediator.Send(command);
+
+                if (result.IsSuccess)
+                    return Ok(result);
+                else
+                    return BadRequest(result);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception details
+                return StatusCode(500, "An error occurred while processing your request: " + ex.Message);
+            }
+        }
+
         [HttpGet]
-        [Route("SearchAllProducts")]
-        public async Task<IActionResult> SearchAllProducts()
+        [Route("SearchProducts")]
+        public async Task<IActionResult> SearchAllProducts([FromQuery]SearchProductsQuery searchProductsQuery)
         {
             try
             {
-                var result = await _mediator.Send(new SearchAllProductQuery());
+                var result = await _mediator.Send(new SearchProductsQuery(searchProductsQuery.ProductName,
+                                                                          searchProductsQuery.MinPrice,
+                                                                          searchProductsQuery.MaxPrice,
+                                                                          searchProductsQuery.PageNumber,
+                                                                          searchProductsQuery.PageSize));
 
                 if (result.IsSuccess)
                     return Ok(result);
@@ -58,25 +82,25 @@ namespace RestApi.Controllers.ProductController
             }
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> SearchProductById(long id)
-        {
-            try
-            {
-                var query = new SearchProductByIdQuery(id);
-                var result = await _mediator.Send(query);
+        //[HttpGet("{id}")]
+        //public async Task<IActionResult> SearchProductById(long id)
+        //{
+        //    try
+        //    {
+        //        var query = new SearchProductByIdQuery(id);
+        //        var result = await _mediator.Send(query);
 
-                if (result.IsSuccess)
-                    return Ok(result);
-                else
-                    return NotFound(result);
-            }
-            catch (Exception ex)
-            {
-                // Log the exception details
-                return StatusCode(500, "An error occurred while processing your request: " + ex.Message);
-            }
-        }
+        //        if (result.IsSuccess)
+        //            return Ok(result);
+        //        else
+        //            return NotFound(result);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // Log the exception details
+        //        return StatusCode(500, "An error occurred while processing your request: " + ex.Message);
+        //    }
+        //}
     }
 
 }
