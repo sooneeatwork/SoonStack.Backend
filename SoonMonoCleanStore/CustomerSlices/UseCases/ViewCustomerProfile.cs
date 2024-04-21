@@ -1,4 +1,9 @@
-﻿namespace CustomerSlices.UseCases
+﻿using Core.Domain.RepoInterface;
+using Core.Domain.ValueObject;
+using Core.UseCases.MapperInterface;
+using Core.UseCases.Wrapper;
+
+namespace CustomerSlices.UseCases
 {
     public class ViewCustomerProfileQuery : IRequest<Result<CustomerProfileResponse>>
     {

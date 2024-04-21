@@ -1,4 +1,7 @@
-﻿namespace ProductMgmtSlices.UseCases.ProductUseCases
+﻿using Core.UseCases.MapperInterface;
+using Core.UseCases.Wrapper;
+
+namespace ProductMgmtSlices.UseCases.ProductUseCases
 {
     public record EditProductCommand(
        int ProductId,

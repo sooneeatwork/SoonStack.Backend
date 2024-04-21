@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SharedKernel.UseCases.MapperInterface
+namespace Core.UseCases.MapperInterface
 {
     public interface IMapper
     {

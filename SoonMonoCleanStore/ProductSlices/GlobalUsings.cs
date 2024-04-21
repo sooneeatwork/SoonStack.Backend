@@ -7,12 +7,12 @@ global using DapperPersistance.DatabaseQueryExecutor;
 global using DapperPersistence;
 global using SqlKata;
 
-global using SharedKernel.Domain;
-global using SharedKernel.UseCases.Wrapper;
-global using SharedKernel.UseCases.MapperInterface;
-global using SharedKernel.PersistanceShared;
-global using SharedKernel.UseCases.ProductSlices;
-global using SharedKernel.Domain.RepoInterface;
+global using Core.Domain;
+global using Core.UseCases.Wrapper;
+global using Core.UseCases.MapperInterface;
+global using Core.PersistanceShared;
+global using Core.UseCases.ProductSlices;
+global using Core.Domain.RepoInterface;
 
 global using Infrastructure.Logging;
 

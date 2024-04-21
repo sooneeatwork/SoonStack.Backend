@@ -1,7 +1,7 @@
-﻿using SharedKernel.Domain.RepoInterface;
-using System.Data;
+﻿using System.Data;
 using Dapper;
 using DapperPersistance.DatabaseQueryExecutor;
+using Core.Domain.RepoInterface;
 
 namespace DapperPersistence
 {

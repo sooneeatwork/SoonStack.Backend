@@ -1,4 +1,7 @@
-﻿using SharedKernel.Domain.DomainModel.ProductModel;
+﻿using Core.Domain.DomainModel.ProductModel;
+using Core.Domain.RepoInterface;
+using Core.UseCases.MapperInterface;
+using Core.UseCases.Wrapper;
 using System.Data.Common;
 
 namespace ProductMgmtSlices.UseCases.ProductUseCases

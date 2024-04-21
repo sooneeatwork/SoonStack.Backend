@@ -1,4 +1,5 @@
-﻿using ProductSlices.Repository.Repository.ProductRepo;
+﻿using Core.UseCases.ProductSlices;
+using ProductSlices.Repository.Repository.ProductRepo;
 
 namespace ProductSlices.ModuleServices
 {

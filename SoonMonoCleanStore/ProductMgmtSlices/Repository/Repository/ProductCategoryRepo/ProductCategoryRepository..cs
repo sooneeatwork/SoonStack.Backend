@@ -1,6 +1,6 @@
-﻿using DapperPersistance.DatabaseQueryExecutor;
+﻿using Core.Domain.DomainModel.ProductModel;
+using DapperPersistance.DatabaseQueryExecutor;
 using DapperPersistence;
-using SharedKernel.Domain.DomainModel.ProductModel;
 using SqlKata;
 using System.Data;
 

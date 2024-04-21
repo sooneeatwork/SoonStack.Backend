@@ -1,4 +1,6 @@
-﻿namespace SharedKernel.Domain.DomainModel.OrderModel
+﻿using Core.Domain;
+
+namespace Core.Domain.DomainModel.OrderModel
 {
     public class Order : BaseEntity
     {

@@ -1,8 +1,9 @@
-﻿using DapperPersistence;
+﻿using Core.PersistanceShared;
+using DapperPersistence;
 
 namespace OrderSlices.Repository.Repository
 {
-                                   
+
     public class OrderRepository : GenericRepository, IOrderRepository
     {
         public OrderRepository(IDbConnection connection, IDbSqlExecutor dbSqlExecutor) : base(connection, dbSqlExecutor)

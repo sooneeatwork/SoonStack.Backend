@@ -1,4 +1,5 @@
-﻿using DapperPersistance;
+﻿using Core.UseCases.Wrapper;
+using DapperPersistance;
 using ProductMgmtSlices.Repository.CategoryIHierarchyMappers;
 
 namespace ProductMgmtSlices.UseCases.ProductCategoryUseCases.Commands

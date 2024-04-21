@@ -1,4 +1,4 @@
-﻿namespace SharedKernel.Domain.DomainModel.UsersModel
+﻿namespace Core.Domain.DomainModel.UsersModel
 {
     public class UserRole : BaseEntity
     {

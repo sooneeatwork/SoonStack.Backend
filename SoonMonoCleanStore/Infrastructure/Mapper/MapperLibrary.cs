@@ -1,5 +1,5 @@
-﻿using Mapster;
-using SharedKernel.UseCases.MapperInterface;
+﻿using Core.UseCases.MapperInterface;
+using Mapster;
 using System;
 using System.Collections.Generic;
 

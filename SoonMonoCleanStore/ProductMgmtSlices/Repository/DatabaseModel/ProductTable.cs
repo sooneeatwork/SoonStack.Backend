@@ -1,5 +1,5 @@
-﻿using ProductMgmtSlices.UseCases.ProductUseCases;
-using SharedKernel.Domain.DomainModel.ProductModel;
+﻿using Core.Domain.DomainModel.ProductModel;
+using ProductMgmtSlices.UseCases.ProductUseCases;
 using System;
 
 namespace ProductMgmtSlices.Repository.DatabaseModel

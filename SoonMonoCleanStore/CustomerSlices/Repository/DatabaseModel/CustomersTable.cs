@@ -1,4 +1,6 @@
-﻿namespace CustomerSlices.Repository.DatabaseModel
+﻿using Core.Domain.ValueObject;
+
+namespace CustomerSlices.Repository.DatabaseModel
 {
     public class CustomersTable
     {

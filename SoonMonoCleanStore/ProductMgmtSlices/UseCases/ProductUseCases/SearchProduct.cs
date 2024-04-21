@@ -1,4 +1,6 @@
-﻿using SharedKernel.UseCases.QueryBase;
+﻿using Core.UseCases.MapperInterface;
+using Core.UseCases.QueryBase;
+using Core.UseCases.Wrapper;
 
 namespace ProductMgmtSlices.UseCases.ProductUseCases
 {

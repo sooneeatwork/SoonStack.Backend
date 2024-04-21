@@ -1,8 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Core.UseCases.ProductSlices;
+using Microsoft.Extensions.DependencyInjection;
 using ProductSlices.ModuleServices;
 using ProductSlices.Repository.ProductTableMapper;
 using ProductSlices.Repository.Repository.ProductRepo;
-using SharedKernel.UseCases.ProductSlices;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SharedKernel.Domain.ValueObject
+namespace Core.Domain.ValueObject
 {
     public class Address
     {

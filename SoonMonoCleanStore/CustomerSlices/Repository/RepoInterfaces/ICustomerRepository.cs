@@ -1,4 +1,6 @@
-﻿namespace CustomerSlices.Repository.RepoInterfaces
+﻿using Core.Domain.RepoInterface;
+
+namespace CustomerSlices.Repository.RepoInterfaces
 {
     public interface ICustomerRepository : IGenericRepository
     {

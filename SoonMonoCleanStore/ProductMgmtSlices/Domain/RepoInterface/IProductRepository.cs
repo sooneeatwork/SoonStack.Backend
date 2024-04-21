@@ -1,4 +1,4 @@
-﻿using SharedKernel.Domain.RepoInterface;
+﻿using Core.Domain.RepoInterface;
 
 namespace ProductMgmtSlices.Domain.RepoInterface
 {

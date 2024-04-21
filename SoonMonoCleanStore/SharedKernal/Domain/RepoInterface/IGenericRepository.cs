@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using System.Data.Common;
 
-namespace SharedKernel.Domain.RepoInterface
+namespace Core.Domain.RepoInterface
 {
     public interface IGenericRepository
     {

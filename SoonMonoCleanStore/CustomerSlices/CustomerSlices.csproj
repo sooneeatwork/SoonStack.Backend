@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Domain\" />
     <Folder Include="ModuleServices\" />
   </ItemGroup>
 
@@ -19,7 +18,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
     <ProjectReference Include="..\Persistance\DapperPersistance.csproj" />
-    <ProjectReference Include="..\SharedKernal\SharedKernel.csproj" />
+    <ProjectReference Include="..\SharedKernal\Core.csproj" />
   </ItemGroup>
 
 </Project>

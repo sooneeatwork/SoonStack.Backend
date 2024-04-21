@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SharedKernel.UseCases.QueryBase
+namespace Core.UseCases.QueryBase
 {
     public class PaginatedList<T>
     {

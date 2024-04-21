@@ -1,4 +1,6 @@
-﻿namespace ProductMgmtSlices.UseCases.ProductCategoryUseCases.Commands
+﻿using Core.UseCases.Wrapper;
+
+namespace ProductMgmtSlices.UseCases.ProductCategoryUseCases.Commands
 {
     public record RemoveChildCategoryCommand(long ChildCategoryId, long? ParentCategoryId = null) : IRequest<Result<bool>>;
 

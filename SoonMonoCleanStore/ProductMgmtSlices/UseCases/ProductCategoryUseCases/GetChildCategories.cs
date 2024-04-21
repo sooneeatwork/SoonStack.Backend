@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using Core.UseCases.Wrapper;
+using MediatR;
 using ProductMgmtSlices.Repository.Repository.ProductCategoryRepo;
 
 namespace ProductMgmtSlices.UseCases.ProductCategoryUseCases.Queries

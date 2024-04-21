@@ -1,4 +1,4 @@
-﻿using SharedKernel.UseCases.ProductSlices;
+﻿using Core.UseCases.ProductSlices;
 using System;
 using System.Collections.Generic;
 using System.Linq;

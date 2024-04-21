@@ -1,9 +1,9 @@
-﻿using MediatR;
+﻿using Core.Domain.DomainModel.ProductModel;
+using Core.UseCases.Wrapper;
+using MediatR;
 using Microsoft.Extensions.Logging;
 using ProductMgmtSlices.Domain;
 using ProductMgmtSlices.Repository.Repository.ProductCategoryRepo;
-using SharedKernel.Domain.DomainModel.ProductModel;
-using SharedKernel.UseCases.Wrapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;

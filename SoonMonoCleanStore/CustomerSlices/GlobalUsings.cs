@@ -6,11 +6,11 @@ global using CustomerSlices.Repository.DatabaseModel;
 global using CustomerSlices.Repository.RepoInterfaces;
 global using CustomerSlices.Repository.CustomerTableMapper;
 
-global using SharedKernel.Domain;
-global using SharedKernel.Domain.ValueObject;
-global using SharedKernel.UseCases.Wrapper;
-global using SharedKernel.UseCases.MapperInterface;
-global using SharedKernel.Domain.RepoInterface;
+global using Core.Domain;
+global using Core.Domain.ValueObject;
+global using Core.UseCases.Wrapper;
+global using Core.UseCases.MapperInterface;
+global using Core.Domain.RepoInterface;
 
 global using DapperPersistance.DatabaseQueryExecutor;
 global using DapperPersistence;

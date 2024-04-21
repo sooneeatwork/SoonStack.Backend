@@ -1,5 +1,5 @@
-﻿using ProductMgmtSlices.Domain;
-using SharedKernel.Domain.DomainModel.ProductModel;
+﻿using Core.Domain.DomainModel.ProductModel;
+using ProductMgmtSlices.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;

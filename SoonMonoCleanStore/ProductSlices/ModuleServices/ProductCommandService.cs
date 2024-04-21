@@ -1,4 +1,6 @@
-﻿using SharedKernel.Domain.DomainModel.ProductModel;
+﻿using Core.Domain.DomainModel.ProductModel;
+using Core.PersistanceShared;
+using Core.UseCases.ProductSlices;
 
 namespace ProductSlices.ModuleServices
 {

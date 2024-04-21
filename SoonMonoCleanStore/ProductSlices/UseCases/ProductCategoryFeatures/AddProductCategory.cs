@@ -1,6 +1,8 @@
-﻿using ProductSlices.Repository.ProductCategoryMapper;
+﻿using Core.Domain.DomainModel.ProductModel;
+using Core.Domain.RepoInterface;
+using Core.UseCases.Wrapper;
+using ProductSlices.Repository.ProductCategoryMapper;
 using ProductSlices.Repository.Repository.ProductCategoryRepo;
-using SharedKernel.Domain.DomainModel.ProductModel;
 
 namespace ProductSlices.UseCases.ProductCategoryFeatures
 {

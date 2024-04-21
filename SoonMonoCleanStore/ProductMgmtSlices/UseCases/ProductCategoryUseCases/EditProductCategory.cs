@@ -1,4 +1,6 @@
-﻿using ProductSlices.Repository.ProductCategoryMapper;
+﻿using Core.UseCases.MapperInterface;
+using Core.UseCases.Wrapper;
+using ProductSlices.Repository.ProductCategoryMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;

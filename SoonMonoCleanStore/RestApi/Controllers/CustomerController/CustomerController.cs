@@ -2,7 +2,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using SharedKernel.Domain.ValueObject;
+using Core.Domain.ValueObject;
 
 namespace RestApi.Controllers.CustomerController
 {

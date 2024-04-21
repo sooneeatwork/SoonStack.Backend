@@ -1,4 +1,4 @@
-﻿using SharedKernel.Domain.DomainModel.ProductModel;
+﻿using Core.Domain.DomainModel.ProductModel;
 
 namespace ProductMgmtSlices.Repository.ProductTableMapper
 {

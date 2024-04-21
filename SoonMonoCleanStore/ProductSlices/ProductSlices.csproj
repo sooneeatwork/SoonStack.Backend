@@ -15,7 +15,7 @@
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
     <ProjectReference Include="..\Persistance\DapperPersistance.csproj" />
     <ProjectReference Include="..\ProductMgmtSlices\ProductMgmtSlices.csproj" />
-    <ProjectReference Include="..\SharedKernal\SharedKernel.csproj" />
+    <ProjectReference Include="..\SharedKernal\Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

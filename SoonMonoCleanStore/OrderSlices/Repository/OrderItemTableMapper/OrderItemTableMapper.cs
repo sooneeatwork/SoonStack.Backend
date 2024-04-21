@@ -1,4 +1,4 @@
-﻿using SharedKernel.Domain.DomainModel.OrderModel;
+﻿using Core.Domain.DomainModel.OrderModel;
 
 namespace OrderSlices.Repository.OrderItemTableMapper
 {

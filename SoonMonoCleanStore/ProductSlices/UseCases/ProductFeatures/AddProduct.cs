@@ -1,5 +1,7 @@
-﻿using ProductMgmtSlices.Domain.RepoInterface;
-using SharedKernel.Domain.DomainModel.ProductModel;
+﻿using Core.Domain.DomainModel.ProductModel;
+using Core.Domain.RepoInterface;
+using Core.UseCases.Wrapper;
+using ProductMgmtSlices.Domain.RepoInterface;
 
 namespace ProductSlices.UseCases
 {

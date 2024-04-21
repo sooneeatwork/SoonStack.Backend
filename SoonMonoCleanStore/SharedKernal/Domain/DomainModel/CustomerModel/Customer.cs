@@ -1,6 +1,7 @@
-﻿using SharedKernel.Domain.ValueObject;
+﻿using Core.Domain;
+using Core.Domain.ValueObject;
 
-namespace SharedKernel.Domain.DomainModel.CustomerModel
+namespace Core.Domain.DomainModel.CustomerModel
 {
     public class Customer : BaseEntity
     {

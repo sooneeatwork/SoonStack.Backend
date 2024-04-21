@@ -1,8 +1,8 @@
-﻿using Infrastructure.Logger;
+﻿using Core.UseCases.MapperInterface;
+using Infrastructure.Logger;
 using Infrastructure.Logging;
 using Infrastructure.Mapper;
 using Microsoft.Extensions.DependencyInjection;
-using SharedKernel.UseCases.MapperInterface;
 using System;
 using System.Collections.Generic;
 using System.Linq;

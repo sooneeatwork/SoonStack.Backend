@@ -1,7 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Core.UseCases.ProductSlices;
+using Microsoft.Extensions.DependencyInjection;
 using ProductMgmtSlices.ModuleServices;
 using ProductMgmtSlices.Repository.Repository;
-using SharedKernel.UseCases.ProductSlices;
 using System.Reflection;
 
 namespace ProductMgmtSlices.DependencyInjection

@@ -1,5 +1,7 @@
-﻿[assembly: InternalsVisibleTo("CleanStoreTest")]
-namespace SharedKernel.Domain.DomainModel.ProductModel
+﻿using Core.Domain;
+
+[assembly: InternalsVisibleTo("CleanStoreTest")]
+namespace Core.Domain.DomainModel.ProductModel
 {
     public class Product : BaseEntity
     {

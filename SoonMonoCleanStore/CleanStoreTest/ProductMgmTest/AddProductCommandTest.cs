@@ -1,5 +1,7 @@
-﻿using ProductMgmtSlices.UseCases.ProductUseCases;
-using SharedKernel.Domain.DomainModel.ProductModel;
+﻿using Core.Domain.DomainModel.ProductModel;
+using Core.Domain.RepoInterface;
+using Core.UseCases.MapperInterface;
+using ProductMgmtSlices.UseCases.ProductUseCases;
 
 namespace CleanStoreTest.ProductMgmTest
 {

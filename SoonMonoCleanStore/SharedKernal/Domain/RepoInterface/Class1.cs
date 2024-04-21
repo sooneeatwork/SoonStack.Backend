@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SharedKernel.Domain.RepoInterface
+namespace Core.Domain.RepoInterface
 {
     internal class Class1
     {

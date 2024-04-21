@@ -1,4 +1,6 @@
-﻿using ProductSlices.Repository.Repository.ProductRepo;
+﻿using Core.UseCases.MapperInterface;
+using Core.UseCases.Wrapper;
+using ProductSlices.Repository.Repository.ProductRepo;
 
 namespace ProductSlices.UseCases.ProductFeatures
 {

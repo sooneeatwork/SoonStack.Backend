@@ -2,9 +2,9 @@
 using System.Data;
 using MySql.Data.MySqlClient;
 using Microsoft.Extensions.Configuration;
-using SharedKernel.Domain.RepoInterface;
 using System.Configuration;
 using DapperPersistance.DatabaseQueryExecutor;
+using Core.Domain.RepoInterface;
 
 namespace DapperPersistence
 {

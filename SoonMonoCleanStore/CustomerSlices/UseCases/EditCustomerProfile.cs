@@ -1,4 +1,7 @@
-﻿using SharedKernel.Domain.DomainModel.CustomerModel;
+﻿using Core.Domain.DomainModel.CustomerModel;
+using Core.Domain.ValueObject;
+using Core.UseCases.MapperInterface;
+using Core.UseCases.Wrapper;
 
 namespace CustomerSlices.UseCases
 {

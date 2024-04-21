@@ -1,4 +1,7 @@
-﻿using SharedKernel.Domain.DomainModel.OrderModel;
+﻿using Core.Domain.DomainModel.OrderModel;
+using Core.Domain.RepoInterface;
+using Core.UseCases.ProductSlices;
+using Core.UseCases.Wrapper;
 
 namespace OrderSlices.UseCases
 {

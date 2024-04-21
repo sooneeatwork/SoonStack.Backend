@@ -1,4 +1,5 @@
-﻿using DapperPersistance.DatabaseQueryExecutor;
+﻿using Core.Domain.RepoInterface;
+using DapperPersistance.DatabaseQueryExecutor;
 using DapperPersistance.DBDialectComplier;
 using DapperPersistance.DBDialectComplier.MySQLDialect;
 using DapperPersistance.DBDialectComplier.PostgreSqlDialect;
@@ -7,7 +8,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MySql.Data.MySqlClient;
 using Npgsql;
-using SharedKernel.Domain.RepoInterface;
 using SqlKata.Compilers;
 using System;
 using System.Collections.Generic;

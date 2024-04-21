@@ -1,4 +1,4 @@
-﻿using SharedKernel.Domain.DomainModel.ProductModel;
+﻿using Core.Domain.DomainModel.ProductModel;
 using System.Data.Common;
 
 namespace ProductMgmtSlices.UseCases

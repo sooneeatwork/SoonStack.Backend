@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-using SharedKernel.Domain.DomainModel.ProductModel;
-using SharedKernel.PersistanceShared;
-using SharedKernel.UseCases.ProductSlices;
+﻿using Core.Domain.DomainModel.ProductModel;
+using Core.PersistanceShared;
+using Core.UseCases.ProductSlices;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;

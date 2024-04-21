@@ -1,4 +1,5 @@
-﻿using SharedKernel.Domain.DomainModel.CustomerModel;
+﻿using Core.Domain.DomainModel.CustomerModel;
+using Core.Domain.ValueObject;
 
 namespace CustomerSlices.Repository.CustomerTableMapper
 {

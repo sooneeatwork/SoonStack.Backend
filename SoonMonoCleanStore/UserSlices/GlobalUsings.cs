@@ -1,1 +1,1 @@
-﻿global using SharedKernel.Domain;
+﻿global using Core.Domain;

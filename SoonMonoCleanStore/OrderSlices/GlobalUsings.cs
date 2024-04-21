@@ -10,12 +10,12 @@ global using MediatR;
 global using DapperPersistance;
 global using DapperPersistance.DatabaseQueryExecutor;
 
-global using SharedKernel.Domain;
-global using SharedKernel.UseCases.MapperInterface;
-global using SharedKernel.UseCases.Wrapper;
-global using SharedKernel.UseCases.ProductSlices;
-global using SharedKernel.Domain.RepoInterface;
-global using SharedKernel.PersistanceShared;
+global using Core.Domain;
+global using Core.UseCases.MapperInterface;
+global using Core.UseCases.Wrapper;
+global using Core.UseCases.ProductSlices;
+global using Core.Domain.RepoInterface;
+global using Core.PersistanceShared;
 
 global using Infrastructure.Logging;
 

@@ -1,6 +1,9 @@
-﻿using ProductMgmtSlices.Repository.Repository.ProductCategoryRepo;
+﻿using Core.Domain.DomainModel.ProductModel;
+using Core.Domain.RepoInterface;
+using Core.UseCases.MapperInterface;
+using Core.UseCases.Wrapper;
+using ProductMgmtSlices.Repository.Repository.ProductCategoryRepo;
 using ProductSlices.Repository.ProductCategoryMapper;
-using SharedKernel.Domain.DomainModel.ProductModel;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;

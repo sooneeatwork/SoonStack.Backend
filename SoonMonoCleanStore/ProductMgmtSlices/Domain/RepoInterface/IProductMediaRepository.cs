@@ -1,4 +1,5 @@
-﻿using SharedKernel.Domain.DomainModel.ProductModel;
+﻿using Core.Domain.DomainModel.ProductModel;
+using Core.Domain.RepoInterface;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,4 +1,6 @@
-﻿namespace ProductSlices.ModuleServices
+﻿using Core.Domain.RepoInterface;
+
+namespace ProductSlices.ModuleServices
 {
     public interface IProductRepository: IGenericRepository
     {

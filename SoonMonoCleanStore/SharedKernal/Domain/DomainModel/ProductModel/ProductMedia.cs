@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SharedKernel.Domain.DomainModel.ProductModel
+namespace Core.Domain.DomainModel.ProductModel
 {
     public class ProductMedia
     {

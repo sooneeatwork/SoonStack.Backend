@@ -1,5 +1,6 @@
-﻿using Infrastructure.Logging;
-using SharedKernel.UseCases.Wrapper;
+﻿using Core.UseCases.MapperInterface;
+using Core.UseCases.Wrapper;
+using Infrastructure.Logging;
 
 namespace OrderSlices.UseCases
 {

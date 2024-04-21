@@ -1,6 +1,7 @@
-﻿using Infrastructure.MediaStorage;
+﻿using Core.Domain.DomainModel.ProductModel;
+using Core.UseCases.Wrapper;
+using Infrastructure.MediaStorage;
 using ProductMgmtSlices.Repository.ProductMediaMapper;
-using SharedKernel.Domain.DomainModel.ProductModel;
 
 namespace ProductMgmtSlices.UseCases.ProductMediaUseCases
 {

@@ -1,5 +1,6 @@
-﻿using ProductSlices.Repository.Repository.ProductRepo;
-using SharedKernel.UseCases.Wrapper;
+﻿using Core.UseCases.MapperInterface;
+using Core.UseCases.Wrapper;
+using ProductSlices.Repository.Repository.ProductRepo;
 using System.Collections.Generic;
 
 namespace ProductSlices.UseCases.ProductFeatures

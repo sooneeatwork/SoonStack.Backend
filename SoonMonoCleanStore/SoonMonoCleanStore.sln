@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedKernel", "SharedKernal\SharedKernel.csproj", "{675CE5AE-F399-44F4-9AE0-247F0CAF7875}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "SharedKernal\Core.csproj", "{675CE5AE-F399-44F4-9AE0-247F0CAF7875}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Feature", "Feature", "{5F7130DB-E224-4272-8A09-9D71FFB5FC64}"
 EndProject
@@ -62,7 +62,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dev_Logs", "Dev_Logs", "{44
 		DEV_001.MD = DEV_001.MD
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Document", "Document\Document.csproj", "{EAABF9F8-A3B9-4934-93DC-55108D0A4CA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Document", "Document\Document.csproj", "{EAABF9F8-A3B9-4934-93DC-55108D0A4CA6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

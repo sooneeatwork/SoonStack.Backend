@@ -1,4 +1,4 @@
-﻿namespace SharedKernel.Domain.DomainModel.ProductModel
+﻿namespace Core.Domain.DomainModel.ProductModel
 {
     public class ProductCategory : BaseEntity
     {
