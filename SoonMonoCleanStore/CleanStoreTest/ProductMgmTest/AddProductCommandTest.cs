@@ -1,4 +1,6 @@
-﻿namespace CleanStoreTest.ProductMgmTest
+﻿using SharedKernel.Domain.DomainModel.ProductModel;
+
+namespace CleanStoreTest.ProductMgmTest
 {
     public class AddProductCommandTests
     {
@@ -14,17 +16,11 @@
             // Arrange
             productRepository.GetCountByProductNameAsync(Arg.Any<string>()).Returns(Task.FromResult(0));
 
-            var productObject = new Product
-            {
-                Name = "Test Product",
-                Price = 100,
-                StockQuantity = 10,
-                Description = "Description"
-            };
+        
 
-            var product = Product.CreateProduct(productObject);
+            var product = Product.CreateProduct("Test Product", 100, "Description",10);
             mapper.Map<AddProductCommand, Product>(Arg.Any<AddProductCommand>()).Returns(product);
-             var productTableData = productTableMappers.MapToTableForInsert(productObject);
+             var productTableData = productTableMappers.MapToTableForInsert(product);
 
             genericRepository.InsertOneGetIdAsync<ProductTable>(productTableData).Returns(Task.FromResult(1L));
 

@@ -10,7 +10,7 @@ global using MediatR;
 global using DapperPersistance;
 global using DapperPersistance.DatabaseQueryExecutor;
 
-global using SharedKernal.Domain;
+global using SharedKernel.Domain;
 global using SharedKernel.UseCases.MapperInterface;
 global using SharedKernel.UseCases.Wrapper;
 global using SharedKernel.UseCases.ProductSlices;
@@ -19,7 +19,7 @@ global using SharedKernel.PersistanceShared;
 
 global using Infrastructure.Logging;
 
-global using OrderSlices.Domain;
+
 global using OrderSlices.Repository.DatabaseModel;
 global using OrderSlices.Repository.OrderItemTableMapper;
 global using OrderSlices.Repository.OrderTableMapper;

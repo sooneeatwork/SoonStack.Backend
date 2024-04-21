@@ -1,4 +1,6 @@
-﻿namespace OrderSlices.Repository.OrderItemTableMapper
+﻿using SharedKernel.Domain.DomainModel.OrderModel;
+
+namespace OrderSlices.Repository.OrderItemTableMapper
 {
     public class OrderItemTableMapper : IOrderItemTableMap
     {

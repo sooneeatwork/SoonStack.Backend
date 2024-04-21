@@ -1,4 +1,6 @@
-﻿namespace ProductSlices.ModuleServices
+﻿using SharedKernel.Domain.DomainModel.ProductModel;
+
+namespace ProductSlices.ModuleServices
 {
     public class ProductCommandService : IProductCommandServices
     {

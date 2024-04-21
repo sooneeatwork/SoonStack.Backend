@@ -1,4 +1,5 @@
-﻿using System.Data.Common;
+﻿using SharedKernel.Domain.DomainModel.ProductModel;
+using System.Data.Common;
 
 namespace ProductMgmtSlices.UseCases
 {
@@ -42,8 +43,8 @@ namespace ProductMgmtSlices.UseCases
                     return Result<long>.Failure($"Product with Name {request.Name} exist.");
 
                 var mappedProduct = _mapper.Map<AddProductCommand,Product>(request);
-                var newProduct =  Product.CreateProduct(mappedProduct);
-                var productData = _productTableMappers.MapToTableForInsert(newProduct);
+                //var newProduct =  Product.CreateProduct(mappedProduct);
+                var productData = _productTableMappers.MapToTableForInsert(mappedProduct);
 
                 long productId = await _genericRepository.InsertOneGetIdAsync<ProductTable>(productData);
                 _logger.LogInformation($"Product added with ID: {productId}");

@@ -1,4 +1,6 @@
-﻿namespace CustomerSlices.Repository.CustomerTableMapper
+﻿using SharedKernel.Domain.DomainModel.CustomerModel;
+
+namespace CustomerSlices.Repository.CustomerTableMapper
 {
     public interface ICustomerTableMappers
     {

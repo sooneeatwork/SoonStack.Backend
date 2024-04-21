@@ -1,5 +1,7 @@
 ﻿
 
+using SharedKernel.Domain.DomainModel.CustomerModel;
+
 namespace CustomerSlices.UseCases
 {
     public record AddNewCustomerProfileCommand(

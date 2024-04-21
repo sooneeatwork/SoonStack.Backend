@@ -1,4 +1,6 @@
-﻿namespace CustomerSlices.UseCases
+﻿using SharedKernel.Domain.DomainModel.CustomerModel;
+
+namespace CustomerSlices.UseCases
 {
     public record EditCustomerProfileCommand(
         int CustomerId,

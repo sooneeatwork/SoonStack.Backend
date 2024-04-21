@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SharedKernel.Domain.DomainModel.ProductModel;
+using System;
 
 namespace ProductMgmtSlices.Repository.DatabaseModel
 {

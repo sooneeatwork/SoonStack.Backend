@@ -1,4 +1,6 @@
-﻿namespace ProductSlices.UseCases
+﻿using SharedKernel.Domain.DomainModel.ProductModel;
+
+namespace ProductSlices.UseCases
 {
 
     public record EditProductCommand(
