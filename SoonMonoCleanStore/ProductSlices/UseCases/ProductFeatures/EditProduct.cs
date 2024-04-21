@@ -1,6 +1,6 @@
-﻿using ProductSlices.Repository.Repository.ProductRepo;
+﻿using SharedKernel.Domain.DomainModel.ProductModel;
 
-namespace ProductSlices.UseCases.ProductFeatures
+namespace ProductSlices.UseCases
 {
 
     public record EditProductCommand(

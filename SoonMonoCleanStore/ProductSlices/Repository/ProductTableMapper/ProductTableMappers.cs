@@ -1,4 +1,6 @@
-﻿namespace ProductSlices.Repository.ProductTableMapper
+﻿using SharedKernel.Domain.DomainModel.ProductModel;
+
+namespace ProductSlices.Repository.ProductTableMapper
 {
     public class ProductTableMappers : IProductTableMappers
     {

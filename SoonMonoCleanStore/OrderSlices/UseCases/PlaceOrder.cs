@@ -1,4 +1,6 @@
-﻿namespace OrderSlices.UseCases
+﻿using SharedKernel.Domain.DomainModel.OrderModel;
+
+namespace OrderSlices.UseCases
 {
     public record PlaceOrderCommand(int CustomerId, List<ProductOrderDto> ProductOrders) : IRequest<Result<long>>;
 

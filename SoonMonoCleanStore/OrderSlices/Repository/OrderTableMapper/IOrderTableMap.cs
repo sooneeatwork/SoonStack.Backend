@@ -1,4 +1,6 @@
-﻿namespace OrderSlices.Repository.OrderTableMapper
+﻿using SharedKernel.Domain.DomainModel.OrderModel;
+
+namespace OrderSlices.Repository.OrderTableMapper
 {
     public interface IOrderTableMap
     {

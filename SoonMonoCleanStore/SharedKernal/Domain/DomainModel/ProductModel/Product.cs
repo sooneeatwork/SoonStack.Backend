@@ -1,8 +1,9 @@
-﻿namespace ProductSlices.Domain
+﻿[assembly: InternalsVisibleTo("CleanStoreTest")]
+namespace SharedKernel.Domain.DomainModel.ProductModel
 {
     public class Product : BaseEntity
     {
-        public long Id { get; set; }    
+        public long Id { get; set; }
         public string Name { get; private set; } = string.Empty;
         public decimal Price { get; private set; }
         public string Description { get; private set; } = string.Empty;
@@ -89,7 +90,7 @@
             return productCount > 0;
         }
 
-        internal void UpdateProductInfo(string newName,
+        public void UpdateProductInfo(string newName,
                                         string newDescription,
                                         decimal newPrice,
                                         int newStockQuantity)

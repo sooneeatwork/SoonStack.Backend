@@ -1,6 +1,6 @@
-﻿namespace UserSlices.Domain
+﻿namespace SharedKernel.Domain.DomainModel.UsersModel
 {
-    
+
     public class Role : BaseEntity
     {
         public long Id { get; set; }

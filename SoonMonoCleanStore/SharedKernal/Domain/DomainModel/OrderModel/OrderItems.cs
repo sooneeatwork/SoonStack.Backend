@@ -1,14 +1,14 @@
-﻿namespace OrderSlices.Domain
+﻿namespace SharedKernel.Domain.DomainModel.OrderModel
 {
     public class OrderItem : BaseEntity
     {
-        public long Id { get; set; } 
+        public long Id { get; set; }
         public long OrderId { get; private set; }
         public long ProductId { get; private set; }
         public int Quantity { get; private set; }
         public decimal Price { get; private set; }
 
-       
+
 
         public static OrderItem CreateOrderItem(long orderId, long productId, int quantity, decimal price)
         {
@@ -43,7 +43,7 @@
             };
         }
 
-       
+
     }
 
 

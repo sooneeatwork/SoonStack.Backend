@@ -1,4 +1,4 @@
-﻿namespace UserSlices.Domain
+﻿namespace SharedKernel.Domain.DomainModel.UsersModel
 {
     public class Address : BaseEntity
     {

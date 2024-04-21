@@ -7,6 +7,5 @@ global using SharedKernel.Domain.RepoInterface;
 global using ProductMgmtSlices.Domain;
 global using ProductMgmtSlices.Repository.DatabaseModel;
 global using SharedKernel.UseCases.MapperInterface;
-global using SharedKernal.Domain;
+global using SharedKernel.Domain;
 global using System.Runtime.CompilerServices;
-global using System.Data.Common;

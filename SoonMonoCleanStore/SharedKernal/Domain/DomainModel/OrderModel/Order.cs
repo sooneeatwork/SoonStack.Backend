@@ -1,4 +1,4 @@
-﻿namespace OrderSlices.Domain
+﻿namespace SharedKernel.Domain.DomainModel.OrderModel
 {
     public class Order : BaseEntity
     {
@@ -50,7 +50,7 @@
 
         internal void AddOrderItem(OrderItem orderItem)
         {
-            if (orderItem != null) 
+            if (orderItem != null)
             {
                 OrderItem.CreateOrderItem(orderItem.OrderId,
                                         orderItem.ProductId,
@@ -59,7 +59,7 @@
                 _orderItems.Add(orderItem);
             }
 
-            
+
         }
     }
 }

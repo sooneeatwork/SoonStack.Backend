@@ -1,4 +1,6 @@
-﻿namespace CustomerSlices.Domain
+﻿using SharedKernel.Domain.ValueObject;
+
+namespace SharedKernel.Domain.DomainModel.CustomerModel
 {
     public class Customer : BaseEntity
     {
@@ -9,8 +11,8 @@
         public Address? BillingAddress { get; private set; }
 
         // Factory method to create a new Customer instance
-        public static Customer CreateCustomer(string name, 
-                                              string email, 
+        public static Customer CreateCustomer(string name,
+                                              string email,
                                               Address address,
                                               DateTime dateOfBirth)
         {
@@ -31,11 +33,11 @@
 
         // Methods to update customer properties can be added here
         // Example:
-    
 
-        public void UpdateCustomerInfo(string newName, 
-                                       DateTime newDateOfBirth, 
-                                       Address newBillingAddress, 
+
+        public void UpdateCustomerInfo(string newName,
+                                       DateTime newDateOfBirth,
+                                       Address newBillingAddress,
                                        string newEmail)
         {
 
@@ -71,7 +73,7 @@
 
         private static void CheckName(string newName)
         {
-            if(string.IsNullOrWhiteSpace(newName))
+            if (string.IsNullOrWhiteSpace(newName))
                 throw new ArgumentException("Name cannot be empty");
         }
 

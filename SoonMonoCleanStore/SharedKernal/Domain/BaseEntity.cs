@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SharedKernal.Domain
+namespace SharedKernel.Domain
 {
     public class BaseEntity
     {
